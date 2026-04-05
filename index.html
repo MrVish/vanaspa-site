@@ -444,9 +444,9 @@ function handleNotify() {
   }
   input.style.outline = '';
   // Wire to Formspree, Brevo, or Mailchimp here:
-  // fetch('https://formspree.io/f/YOUR_ID', { method:'POST',
-  //   headers:{'Content-Type':'application/json'},
-  //   body: JSON.stringify({ email }) })
+  fetch('https://formspree.io/f/mvzvvydy', { method:'POST',
+  headers:{'Content-Type':'application/json'},
+  body: JSON.stringify({ email }) })
   console.log('Notify:', email);
   document.getElementById('notifyForm').style.display    = 'none';
   document.getElementById('notifySuccess').style.display = 'block';
