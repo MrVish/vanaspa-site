@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- VĀNA — Mark Only (no wordmark) -->
-<!-- Usage: favicon, WhatsApp display picture, app icon, embossing, stamps -->
+<!-- VĀNA — Mark Only (Light / White background) -->
+<!-- Usage: print, business cards, letterheads, light backgrounds -->
 <svg
   viewBox="0 0 200 200"
   width="200"
@@ -9,39 +9,39 @@
   xmlns="http://www.w3.org/2000/svg"
 >
   <title>VĀNA</title>
-  <desc>VĀNA Wellness Spa — mark only, for use at small sizes</desc>
+  <desc>VĀNA Wellness Spa — mark only, light version for white/cream backgrounds</desc>
 
-  <!-- Background circle — works as app icon / WhatsApp DP -->
-  <circle cx="100" cy="100" r="100" fill="#0C1610"/>
+  <!-- Background circle — cream/white -->
+  <circle cx="100" cy="100" r="100" fill="#F5F0E6"/>
 
   <!-- Left stroke -->
   <line x1="52" y1="148" x2="100" y2="44"
-    stroke="#EDE3CC" stroke-opacity="0.88"
+    stroke="#0C1610" stroke-opacity="0.85"
     stroke-width="3.2" stroke-linecap="round"/>
 
   <!-- Right stroke -->
   <line x1="148" y1="148" x2="100" y2="44"
-    stroke="#EDE3CC" stroke-opacity="0.88"
+    stroke="#0C1610" stroke-opacity="0.85"
     stroke-width="3.2" stroke-linecap="round"/>
 
   <!-- Crossbar -->
   <line x1="67" y1="104" x2="133" y2="104"
-    stroke="#EDE3CC" stroke-opacity="0.22"
+    stroke="#0C1610" stroke-opacity="0.2"
     stroke-width="1.5" stroke-linecap="round"/>
 
-  <!-- Breath arc 1 — widest -->
+  <!-- Breath arc 1 — widest, terracotta -->
   <path d="M82 37 Q100 25 118 37"
-    stroke="#C49638" stroke-opacity="0.88"
+    stroke="#A04E26" stroke-opacity="0.82"
     stroke-width="2" fill="none" stroke-linecap="round"/>
 
   <!-- Breath arc 2 -->
   <path d="M88 27 Q100 17 112 27"
-    stroke="#C49638" stroke-opacity="0.48"
+    stroke="#A04E26" stroke-opacity="0.44"
     stroke-width="1.4" fill="none" stroke-linecap="round"/>
 
   <!-- Breath arc 3 -->
   <path d="M93 19 Q100 12 107 19"
-    stroke="#C49638" stroke-opacity="0.22"
+    stroke="#A04E26" stroke-opacity="0.2"
     stroke-width="0.9" fill="none" stroke-linecap="round"/>
 
 </svg>
