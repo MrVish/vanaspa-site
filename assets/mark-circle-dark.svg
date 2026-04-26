@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>VĀNA — Circular mark (dark, A3)</title>
+  <circle cx="256" cy="256" r="256" fill="#0C1610"></circle>
+  <filter id="g">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"></feTurbulence>
+    <feColorMatrix values="0 0 0 0 0.93   0 0 0 0 0.89   0 0 0 0 0.80   0 0 0 0.04 0"></feColorMatrix>
+  </filter>
+  <circle cx="256" cy="256" r="256" filter="url(#g)"></circle>
+  <circle cx="256" cy="256" r="238" fill="none" stroke="#BF9030" stroke-opacity="0.18" stroke-width="1"></circle>
+
+  <g transform="translate(156 126)">
+    <g fill="none" stroke="#BF9030" stroke-linecap="round">
+      <path d="M 65 24 C 80 12 120 12 135 24" stroke-width="2.6" opacity="1"></path>
+      <path d="M 74 17 C 86 9 114 9 126 17" stroke-width="2.0" opacity="0.55"></path>
+      <path d="M 83 12 C 92 7 108 7 117 12" stroke-width="1.5" opacity="0.28"></path>
+    </g>
+    <g fill="none" stroke="#EDE3CC" stroke-linecap="round">
+      <path d="M 100 34 L 34 230" stroke-width="2.2"></path>
+      <path d="M 100 34 L 166 230" stroke-width="2.2"></path>
+      <path d="M 58 168 Q 100 158 142 168" stroke-width="1.3" opacity="0.7"></path>
+    </g>
+  </g>
+</svg>

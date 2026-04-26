@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <title>VĀNA — Breath pattern tile</title>
+  <desc>Tileable pattern: three breath arcs motif at 5% on Canopy.</desc>
+
+  <rect width="240" height="240" fill="#0C1610"></rect>
+
+  <defs>
+    <g id="breath-tile">
+      <g fill="none" stroke="#A04E26" stroke-linecap="round" stroke-width="1.25" opacity="0.10">
+        <path d="M 10 24 Q 30 8 50 24"></path>
+        <path d="M 15 18 Q 30 6 45 18" opacity="0.6"></path>
+        <path d="M 20 13 Q 30 5 40 13" opacity="0.3"></path>
+      </g>
+    </g>
+  </defs>
+
+  
+  <g>
+    <use href="#breath-tile" x="10" y="20"></use>
+    <use href="#breath-tile" x="90" y="20"></use>
+    <use href="#breath-tile" x="170" y="20"></use>
+
+    <use href="#breath-tile" x="50" y="80"></use>
+    <use href="#breath-tile" x="130" y="80"></use>
+    <use href="#breath-tile" x="210" y="80"></use>
+
+    <use href="#breath-tile" x="10" y="140"></use>
+    <use href="#breath-tile" x="90" y="140"></use>
+    <use href="#breath-tile" x="170" y="140"></use>
+
+    <use href="#breath-tile" x="50" y="200"></use>
+    <use href="#breath-tile" x="130" y="200"></use>
+    <use href="#breath-tile" x="210" y="200"></use>
+  </g>
+</svg>
