@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140">
+  <title>VĀNA — breath arcs (stand-alone motif)</title>
+  
+  <g fill="none" stroke="#A04E26" stroke-linecap="round">
+    <path d="M 44 84 C 70 46 128 44 156 78" stroke-width="3.5" opacity="1"></path>
+    <path d="M 58 68 C 80 44 124 44 142 64" stroke-width="2.8" opacity="0.58"></path>
+    <path d="M 72 54 C 88 42 118 42 130 50" stroke-width="2.2" opacity="0.3"></path>
+  </g>
+</svg>

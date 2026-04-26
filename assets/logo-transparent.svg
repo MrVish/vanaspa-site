@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="400" height="460">
+  <title>VĀNA — Primary logo (transparent, vessel)</title>
+
+  <g fill="none" stroke="#A04E26" stroke-linecap="round">
+    <path d="M 130 34 C 160 10 240 10 270 34" stroke-width="3.2" opacity="1"></path>
+    <path d="M 148 22 C 172 8 228 8 252 22" stroke-width="2.4" opacity="0.55"></path>
+    <path d="M 166 14 C 184 6 216 6 234 14" stroke-width="1.8" opacity="0.28"></path>
+  </g>
+
+  <g fill="#EDE3CC">
+    <path d="M 199 54 L 201 54 L 59 400 L 59 406 L 46 406 L 38 404 L 38 400 L 46 400 L 53 398 L 197 54 Z"></path>
+    <path d="M 199 54 L 201 54 L 347 398 L 354 400 L 362 400 L 362 404 L 354 406 L 341 406 L 341 400 Z"></path>
+    <rect x="90" y="238" width="220" height="1.6" opacity="0.7"></rect>
+  </g>
+
+  <text x="200" y="345" font-family="&#39;Cormorant Garamond&#39;, Cormorant, Garamond, serif" font-style="italic" font-weight="300" font-size="60" fill="#EDE3CC" text-anchor="middle" letter-spacing="1">V<tspan dx="-7">ĀNA</tspan></text>
+
+  <g transform="translate(188 360)" fill="none" stroke="#BF9030" stroke-linecap="round" opacity="0.75">
+    <path d="M 0 7 C 5 0 22 0 27 6" stroke-width="1.1"></path>
+    <path d="M 4 4 C 8 1 19 1 23 3" stroke-width="0.8" opacity="0.55"></path>
+  </g>
+
+  <text x="200" y="445" font-family="&#39;DM Sans&#39;, sans-serif" font-weight="300" font-size="10" fill="#EDE3CC" fill-opacity="0.6" text-anchor="middle" letter-spacing="5">WELLNESS SPA · KOCHI</text>
+</svg>

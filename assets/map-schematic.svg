@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" preserveAspectRatio="xMidYMid slice">
+  <title>Kakkanad — schematic map</title>
+  <defs>
+    <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.5" fill="#BF9030" fill-opacity="0.35"></circle>
+    </pattern>
+  </defs>
+  
+  <rect width="640" height="480" fill="#1A2914"></rect>
+  <rect width="640" height="480" fill="url(#dots)"></rect>
+
+  
+  <path d="M 0 320 Q 160 300 240 340 L 240 480 L 0 480 Z" fill="#3D5430" fill-opacity="0.35"></path>
+  <ellipse cx="510" cy="120" rx="140" ry="70" fill="#3D5430" fill-opacity="0.28"></ellipse>
+  <rect x="420" y="320" width="220" height="160" fill="#3D5430" fill-opacity="0.2"></rect>
+
+  
+  <g stroke="#BF9030" stroke-opacity="0.45" fill="none">
+    <path d="M 0 240 L 640 210" stroke-width="2.5"></path>
+    <path d="M 290 0 L 310 480" stroke-width="2.5"></path>
+  </g>
+  
+  <text x="60" y="232" font-family="&#39;DM Sans&#39;, sans-serif" font-size="9" fill="#BF9030" fill-opacity="0.7" letter-spacing="2" text-transform="uppercase">SEAPORT — AIRPORT RD</text>
+
+  
+  <g stroke="#EDE3CC" stroke-opacity="0.18" fill="none" stroke-width="1">
+    <path d="M 0 80 L 640 110"></path>
+    <path d="M 0 380 L 640 400"></path>
+    <path d="M 140 0 L 155 480"></path>
+    <path d="M 450 0 L 470 480"></path>
+    <path d="M 0 480 L 640 100"></path>
+    <path d="M 100 0 L 520 480"></path>
+  </g>
+
+  
+  <g fill="#EDE3CC" fill-opacity="0.4">
+    <circle cx="140" cy="110" r="1.5"></circle>
+    <circle cx="460" cy="110" r="1.5"></circle>
+    <circle cx="130" cy="400" r="1.5"></circle>
+    <circle cx="475" cy="400" r="1.5"></circle>
+  </g>
+
+  
+  <text x="500" y="100" font-family="&#39;DM Sans&#39;, sans-serif" font-size="9" fill="#EDE3CC" fill-opacity="0.5" letter-spacing="1.5">INFOPARK</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>VĀNA Wellness Spa — Opening Spring 2026, Kakkanad, Kochi</title>
+
+  
+  <defs>
+    <radialGradient id="ogCenter" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1a3020" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="#0C1610" stop-opacity="1"></stop>
+    </radialGradient>
+    <radialGradient id="ogGlow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#BF9030" stop-opacity="0.18"></stop>
+      <stop offset="50%" stop-color="#A04E26" stop-opacity="0.06"></stop>
+      <stop offset="100%" stop-color="#BF9030" stop-opacity="0"></stop>
+    </radialGradient>
+    <filter id="ogGrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"></feTurbulence>
+      <feColorMatrix values="0 0 0 0 0.93   0 0 0 0 0.89   0 0 0 0 0.80   0 0 0 0.05 0"></feColorMatrix>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogCenter)"></rect>
+  <ellipse cx="600" cy="315" rx="520" ry="280" fill="url(#ogGlow)"></ellipse>
+  <rect width="1200" height="630" filter="url(#ogGrain)"></rect>
+
+  
+  <text x="600" y="80" font-family="&#39;DM Sans&#39;, sans-serif" font-weight="400" font-size="14" fill="#EDE3CC" fill-opacity="0.4" text-anchor="middle" letter-spacing="6">THERAPEUTIC MASSAGE SPA · KAKKANAD, KOCHI</text>
+
+  
+  <line x1="220" y1="120" x2="980" y2="120" stroke="#BF9030" stroke-opacity="0.3" stroke-width="1"></line>
+
+  
+  <g transform="translate(530 165)">
+    
+    <circle cx="70" cy="80" r="120" fill="#BF9030" fill-opacity="0.06"></circle>
+    <circle cx="70" cy="80" r="80" fill="#BF9030" fill-opacity="0.04"></circle>
+
+    
+    <g fill="none" stroke="#BF9030" stroke-linecap="round">
+      <path d="M 30 30 C 50 12 90 12 110 30" stroke-width="3"></path>
+      <path d="M 42 22 C 58 12 82 12 98 22" stroke-width="2.4" opacity="0.6"></path>
+      <path d="M 52 16 C 62 10 78 10 88 16" stroke-width="1.8" opacity="0.32"></path>
+    </g>
+
+    
+    <g fill="none" stroke="#EDE3CC" stroke-opacity="0.92" stroke-linecap="round">
+      <path d="M 70 42 L 12 198" stroke-width="2.6"></path>
+      <path d="M 70 42 L 128 198" stroke-width="2.6"></path>
+      <path d="M 30 142 Q 70 134 110 142" stroke-width="1.5" opacity="0.7"></path>
+    </g>
+  </g>
+
+  
+  <text x="600" y="430" font-family="&#39;Plus Jakarta Sans&#39;, system-ui, sans-serif" font-style="italic" font-weight="800" font-size="118" fill="#EDE3CC" text-anchor="middle" letter-spacing="2">VĀNA</text>
+
+  
+  <text x="600" y="470" font-family="&#39;Cormorant Garamond&#39;, Georgia, serif" font-style="italic" font-weight="400" font-size="22" fill="#EDE3CC" fill-opacity="0.55" text-anchor="middle">Wellness Spa · Kakkanad, Kochi</text>
+
+  
+  <line x1="320" y1="510" x2="880" y2="510" stroke="#BF9030" stroke-opacity="0.3" stroke-width="1"></line>
+
+  
+  <g>
+    <circle cx="445" cy="555" r="4" fill="#A04E26"></circle>
+    <text x="600" y="560" font-family="&#39;DM Sans&#39;, sans-serif" font-weight="500" font-size="13" fill="#BF9030" fill-opacity="0.85" text-anchor="middle" letter-spacing="5">OPENING SPRING 2026 · MAVELIPURAM JUNCTION</text>
+  </g>
+
+  
+  <text x="600" y="595" font-family="&#39;DM Sans&#39;, sans-serif" font-weight="300" font-size="11" fill="#EDE3CC" fill-opacity="0.32" text-anchor="middle" letter-spacing="3">vanaspa.com · Open until 10:30 PM · 7 days a week</text>
+</svg>
