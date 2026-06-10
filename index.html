@@ -3,7 +3,8 @@
 <head>
 
 <!-- ═══════════════════════════════════════════════
-  VĀNA — full site, pre-opening mode · v3
+  VĀNA — full site, pre-opening mode · v4 "Last Light"
+  Warm golden-hour editorial redesign
 ═══════════════════════════════════════════════ -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
 <meta name="keywords" content="spa Kakkanad, massage Kakkanad, wellness spa Kochi, spa near Infopark, therapeutic massage Kochi, Swedish massage Kakkanad, Balinese massage Kochi, deep tissue massage Kakkanad, Thai massage Kochi, reflexology Kochi, couples massage Kochi, best spa Kakkanad, spa Athani, massage near SmartCity Kochi, women safe spa Kochi, luxury spa Kochi, VANA wellness spa, Vana spa Kakkanad">
 <meta name="author" content="VĀNA Wellness Spa">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0C1610">
+<meta name="theme-color" content="#23311E">
 
 <link rel="canonical" href="https://vanaspa.com/">
 <link rel="preload" as="image" href="/assets/img/hero-reception.jpg">
@@ -131,301 +132,300 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@200;300;400;500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:wght@200;300;400;500&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;1,800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --canopy:#0C1610; --grove:#1A2914; --fern:#3D5430;
-  --terra:#A04E26;  --ochre:#BF9030;
-  --linen:#EDE3CC;  --cream:#F5F0E6; --mist:#DDD5BC;
+:root{
+  /* Warm "Last Light" palette */
+  --paper:#F4ECDD; --cream:#FBF7EF; --sand:#EADCC6; --sand-deep:#E3D2B8;
+  --ink:#23201A; --soft:#564B3D; --faint:#6A5E4B;
+  --forest:#22301D; --forest-2:#2A3A24; --fern:#46603A;
+  --terra:#984320; --terra-lt:#C06A38;
+  --gold:#7C5C17; --gold-mid:#B0832E; --gold-lt:#E6C277;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',system-ui,sans-serif;
   --brand:'Plus Jakarta Sans',system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
-  --hairline:rgba(191,144,48,.16);
+  --hair:rgba(35,32,26,.13);
+  --hair-gold:rgba(154,115,34,.28);
+  --shadow:0 24px 60px -28px rgba(35,32,26,.4);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:300;background:var(--canopy);color:var(--linen);overflow-x:hidden}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.5}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
-::selection{background:rgba(160,78,38,.45);color:var(--cream)}
+::selection{background:rgba(162,74,34,.22);color:var(--ink)}
 
-/* Grain */
+/* Paper grain */
 body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:100;opacity:.45;mix-blend-mode:overlay;
+  content:'';position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
 }
 
-/* ── Header ───────────────────────────── */
+/* ── Shared ─────────────────────────────── */
+.eyebrow{font-family:var(--sans);font-size:10.5px;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:var(--terra)}
+.eyebrow.center{display:block;text-align:center}
+.eyebrow.center::before,.eyebrow.center::after{content:'';display:inline-block;width:32px;height:1px;background:var(--hair-gold);vertical-align:middle;margin:0 16px}
+.title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(33px,4.7vw,54px);line-height:1.13;letter-spacing:.005em;color:var(--ink)}
+.sub{max-width:560px;font-size:14px;line-height:1.95;color:var(--soft);margin-top:20px}
+.t-center{text-align:center}
+.t-center .sub{margin-left:auto;margin-right:auto}
+.sect{max-width:1180px;margin:0 auto;padding:clamp(86px,11vw,132px) 40px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 34px;font-size:11px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:all .35s var(--ease);border:1px solid transparent}
+.btn-primary{background:var(--terra);color:var(--cream)}
+.btn-primary:hover{background:var(--terra-lt);transform:translateY(-2px);box-shadow:0 16px 30px -18px rgba(162,74,34,.8)}
+.btn-ghost{border-color:rgba(251,247,239,.42);color:var(--cream);background:rgba(34,48,29,.18);backdrop-filter:blur(6px)}
+.btn-ghost:hover{border-color:var(--gold-lt);color:#fff}
+.btn-dark{border:1px solid var(--ink);color:var(--ink)}
+.btn-dark:hover{background:var(--ink);color:var(--cream)}
+
+/* ── Header ─────────────────────────────── */
 .site-head{
-  position:fixed;top:0;left:0;right:0;z-index:50;
+  position:fixed;top:0;left:0;right:0;z-index:60;
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 32px;transition:background .4s,border-color .4s;
+  padding:20px 40px;transition:background .45s,border-color .45s,padding .45s;
   background:transparent;border-bottom:1px solid transparent;
 }
 .site-head.scrolled{
-  background:rgba(12,22,16,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom-color:var(--hairline);
+  background:rgba(244,236,221,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom-color:var(--hair);padding-top:14px;padding-bottom:14px;
 }
-.head-brand{display:flex;align-items:center;gap:11px}
-.head-mark{width:22px;height:27px}
-.head-word{font-family:var(--brand);font-style:italic;font-weight:800;font-size:17px;letter-spacing:.02em;color:var(--linen)}
-.head-nav{display:flex;align-items:center;gap:30px}
-.head-nav a{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(237,227,204,.55);transition:color .25s}
-.head-nav a:hover{color:var(--cream)}
+.head-brand{display:flex;align-items:center;gap:12px}
+.head-mark{width:23px;height:28px;transition:transform .6s var(--ease)}
+.head-brand:hover .head-mark{transform:rotate(-4deg)}
+.head-word{font-family:var(--brand);font-style:italic;font-weight:800;font-size:18px;letter-spacing:.02em;color:var(--cream);transition:color .45s}
+.site-head.scrolled .head-word{color:var(--ink)}
+.head-nav{display:flex;align-items:center;gap:32px}
+.head-nav a{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(251,247,239,.72);transition:color .3s}
+.site-head.scrolled .head-nav a{color:var(--soft)}
+.head-nav a:hover{color:var(--gold-lt)}
+.site-head.scrolled .head-nav a:hover{color:var(--terra)}
 .head-cta{
-  padding:10px 20px;border:1px solid rgba(191,144,48,.35);
-  font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(191,144,48,.95);
-  transition:all .3s var(--ease);
+  padding:10px 20px;border:1px solid rgba(230,194,119,.55);color:var(--gold-lt) !important;
+  letter-spacing:.2em;transition:all .35s var(--ease);
 }
-.head-cta:hover{background:rgba(191,144,48,.14);color:var(--cream)}
-@media(max-width:760px){.head-nav a:not(.head-cta){display:none}.site-head{padding:14px 20px}}
+.site-head.scrolled .head-cta{border-color:var(--terra);color:var(--terra) !important}
+.head-cta:hover{background:rgba(230,194,119,.16)}
+.site-head.scrolled .head-cta:hover{background:var(--terra);color:var(--cream) !important}
+@media(max-width:780px){.head-nav a:not(.head-cta){display:none}.site-head{padding:14px 22px}}
 
-/* ── Hero ─────────────────────────────── */
+/* ── Hero ───────────────────────────────── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.06);animation:heroIn 2.4s var(--ease) both}
-@keyframes heroIn{from{transform:scale(1.13);opacity:0}to{transform:scale(1.06);opacity:1}}
-.hero-veil{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(180deg,rgba(12,22,16,.55) 0%,rgba(12,22,16,.18) 38%,rgba(12,22,16,.62) 72%,rgba(12,22,16,.96) 100%),
-    radial-gradient(ellipse 90% 60% at 50% 110%,rgba(12,22,16,.85) 0%,transparent 70%);
-}
-.hero-inner{
-  position:relative;z-index:2;width:100%;max-width:1080px;margin:0 auto;
-  padding:160px 28px 90px;display:flex;flex-direction:column;align-items:flex-start;
-}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center;transform:scale(1.05);animation:heroZoom 12s var(--ease) both}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1.02)}}
+.hero-veil{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(34,28,18,.30) 0%,transparent 24%,transparent 48%,rgba(28,30,20,.40) 70%,rgba(20,24,15,.88) 100%),
+  radial-gradient(120% 78% at 22% 96%,rgba(18,22,14,.66) 0%,transparent 62%)}
+.hero-inner{position:relative;z-index:3;width:100%;max-width:1180px;margin:0 auto;padding:0 40px 96px;display:flex;flex-direction:column;align-items:flex-start}
 .hero-eyebrow{
-  display:inline-flex;align-items:center;gap:9px;padding:8px 18px;margin-bottom:26px;
-  border:1px solid rgba(191,144,48,.3);background:rgba(12,22,16,.5);backdrop-filter:blur(6px);
-  font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:rgba(191,144,48,.9);
-  animation:fadeUp 1s var(--ease) .5s both;
+  display:inline-flex;align-items:center;gap:10px;padding:8px 18px;margin-bottom:26px;
+  border:1px solid rgba(230,194,119,.42);background:rgba(22,26,17,.42);backdrop-filter:blur(6px);
+  font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-lt);
+  opacity:0;animation:fadeUp 1s var(--ease) .5s both;
 }
-.badge-dot{width:5px;height:5px;border-radius:50%;background:var(--terra);box-shadow:0 0 6px rgba(160,78,38,.8);animation:pulse 2.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--terra-lt);box-shadow:0 0 8px rgba(192,106,56,.9);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.7)}}
 .hero h1{
   font-family:var(--brand);font-style:italic;font-weight:800;
-  font-size:clamp(58px,10vw,110px);line-height:.95;color:var(--cream);letter-spacing:.01em;
-  animation:fadeUp 1.1s var(--ease) .65s both;
+  font-size:clamp(66px,11.5vw,138px);line-height:.9;color:var(--cream);letter-spacing:.01em;
+  text-shadow:0 10px 50px rgba(16,20,12,.5);opacity:0;animation:fadeUp 1.1s var(--ease) .64s both;
 }
 .hero-tag{
-  font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(17px,2.6vw,24px);
-  color:rgba(237,227,204,.78);margin:18px 0 14px;letter-spacing:.03em;
-  animation:fadeUp 1s var(--ease) .8s both;
+  font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(19px,2.7vw,28px);
+  color:rgba(251,247,239,.92);margin:16px 0 16px;letter-spacing:.01em;
+  opacity:0;animation:fadeUp 1s var(--ease) .8s both;
 }
-.hero-tag em{font-style:normal;color:#D89A60}
+.hero-tag em{font-style:normal;color:var(--gold-lt)}
 .hero-lede{
-  max-width:520px;font-size:13.5px;line-height:2;color:rgba(237,227,204,.65);
-  animation:fadeUp 1s var(--ease) .95s both;
+  max-width:540px;font-size:14px;line-height:1.95;color:rgba(251,247,239,.8);
+  opacity:0;animation:fadeUp 1s var(--ease) .95s both;
 }
-.hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;animation:fadeUp 1s var(--ease) 1.1s both}
-.btn{
-  display:inline-flex;align-items:center;gap:10px;padding:15px 32px;
-  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
-  cursor:pointer;transition:all .3s var(--ease);border:1px solid transparent;
+.hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) 1.12s both}
+.scroll-cue{
+  position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:rgba(251,247,239,.6);
+  opacity:0;animation:fadeUp 1s var(--ease) 1.5s both;
 }
-.btn-primary{background:var(--terra);color:var(--cream)}
-.btn-primary:hover{background:#B85E32}
-.btn-ghost{border-color:rgba(237,227,204,.28);color:rgba(237,227,204,.8);background:rgba(12,22,16,.35);backdrop-filter:blur(6px)}
-.btn-ghost:hover{border-color:rgba(191,144,48,.6);color:var(--cream)}
+.scroll-cue .ln{width:1px;height:46px;background:linear-gradient(rgba(230,194,119,.7),transparent);animation:cueDrop 2.4s var(--ease) infinite}
+@keyframes cueDrop{0%{transform:scaleY(.3);transform-origin:top;opacity:0}40%{opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
 
-/* ── Ticker strip ─────────────────────── */
-.strip{
-  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
-  background:var(--canopy);
-  display:flex;justify-content:center;gap:0;flex-wrap:wrap;
-}
-.strip-item{flex:1;min-width:200px;padding:26px 20px;text-align:center;border-right:1px solid var(--hairline)}
+/* ── Strip ──────────────────────────────── */
+.strip{display:flex;flex-wrap:wrap;background:var(--cream);border-bottom:1px solid var(--hair)}
+.strip-item{flex:1;min-width:210px;padding:34px 22px;text-align:center;border-right:1px solid var(--hair);transition:background .4s}
 .strip-item:last-child{border-right:none}
-.strip-big{font-family:var(--serif);font-style:italic;font-size:21px;color:rgba(237,227,204,.9)}
-.strip-small{margin-top:6px;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(191,144,48,.6)}
+.strip-item:hover{background:var(--paper)}
+.strip-big{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--ink)}
+.strip-small{margin-top:7px;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
 
-/* ── Sections base ────────────────────── */
-section{position:relative}
-.sect{padding:120px 28px;max-width:1080px;margin:0 auto}
-.eyebrow{font-size:9.5px;letter-spacing:.46em;text-transform:uppercase;color:rgba(191,144,48,.6);margin-bottom:18px}
-.eyebrow.center{text-align:center}
-.eyebrow.center::before,.eyebrow.center::after{
-  content:'';display:inline-block;width:30px;height:1px;background:rgba(191,144,48,.3);
-  vertical-align:middle;margin:0 14px;
-}
-.sect-title{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:clamp(30px,4.5vw,44px);color:var(--linen);line-height:1.22;
-}
-.sect-sub{max-width:560px;font-size:13px;line-height:2;color:rgba(237,227,204,.5);margin-top:18px}
-.t-center{text-align:center}
-.t-center .sect-sub{margin-left:auto;margin-right:auto}
-
-/* ── Story ────────────────────────────── */
-.story .sect{padding-bottom:90px}
-.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+/* ── Story ──────────────────────────────── */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 @media(max-width:820px){.story-grid{grid-template-columns:1fr;gap:40px}}
-.story-copy p{font-size:13.5px;line-height:2.15;color:rgba(237,227,204,.58);margin-top:18px}
-.story-copy p:first-of-type{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.9;color:rgba(237,227,204,.78)}
-.story-figure{overflow:hidden}
-.story-figure img{width:100%;aspect-ratio:4/3.2;object-fit:cover;transition:transform 1.3s var(--ease)}
-.story-figure:hover img{transform:scale(1.04)}
+.story-copy p{font-size:14px;line-height:2.1;color:var(--soft);margin-top:18px}
+.story-copy p.lead{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.7;color:var(--ink)}
+.story-copy em{font-style:italic;color:var(--terra)}
+.story-figure{position:relative;overflow:hidden;border-radius:3px;box-shadow:var(--shadow)}
+.story-figure img{width:100%;aspect-ratio:4/3.4;object-fit:cover;transition:transform 1.4s var(--ease)}
+.story-figure:hover img{transform:scale(1.05)}
+.story-figure::after{content:'';position:absolute;inset:0;border:1px solid rgba(251,247,239,.12);pointer-events:none}
 
-/* ── The VĀNA way ─────────────────────── */
-.way-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+/* ── The VĀNA Way (forest band) ─────────── */
+.way-band{position:relative;background:var(--forest);color:var(--cream);overflow:hidden}
+.way-band::before{content:'';position:absolute;inset:0;background:radial-gradient(80% 60% at 80% 0%,rgba(70,96,58,.32),transparent 60%);pointer-events:none}
+.way-band .eyebrow{color:var(--gold-lt)}
+.way-band .eyebrow.center::before,.way-band .eyebrow.center::after{background:rgba(230,194,119,.32)}
+.way-band .title{color:var(--cream)}
+.way-band .sub{color:rgba(251,247,239,.66)}
+.way-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:62px;background:rgba(230,194,119,.16);border:1px solid rgba(230,194,119,.16)}
 @media(max-width:760px){.way-grid{grid-template-columns:1fr}}
-.way-card{
-  padding:42px 32px;background:rgba(255,255,255,.025);
-  border-top:2px solid rgba(191,144,48,.2);transition:all .35s var(--ease);
-}
-.way-card:hover{background:rgba(255,255,255,.05);border-top-color:rgba(191,144,48,.65);transform:translateY(-4px)}
-.way-num{font-family:var(--serif);font-style:italic;font-size:32px;color:rgba(191,144,48,.45);margin-bottom:20px}
-.way-card h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;color:rgba(237,227,204,.92);margin-bottom:12px}
-.way-card p{font-size:12.5px;line-height:2;color:rgba(237,227,204,.52)}
-.way-foot{margin-top:44px;text-align:center;font-family:var(--serif);font-style:italic;font-size:17px;color:rgba(237,227,204,.45)}
+.way-card{background:var(--forest);padding:46px 36px;transition:background .4s var(--ease),transform .4s var(--ease)}
+.way-card:hover{background:var(--forest-2);transform:translateY(-3px)}
+.way-num{font-family:var(--serif);font-style:italic;font-size:40px;color:rgba(230,194,119,.55);line-height:1}
+.way-card h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:23px;color:var(--cream);margin:18px 0 12px}
+.way-card p{font-size:13px;line-height:1.95;color:rgba(251,247,239,.62)}
+.way-foot{margin-top:46px;text-align:center;font-family:var(--serif);font-style:italic;font-size:18px;color:rgba(251,247,239,.5)}
 
-/* ── Treatments split ─────────────────── */
-.tx-band{background:var(--grove)}
-.tx-split{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
-@media(max-width:860px){.tx-split{grid-template-columns:1fr;gap:44px}}
-.tx-figure{position:sticky;top:110px;overflow:hidden}
-@media(max-width:860px){.tx-figure{position:static}}
-.tx-figure img{width:100%;aspect-ratio:4/4.6;object-fit:cover;transition:transform 1.2s var(--ease)}
-.tx-figure:hover img{transform:scale(1.04)}
-.tx-figure figcaption{margin-top:14px;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(237,227,204,.32)}
-.tx-list{border-top:1px solid var(--hairline);margin-top:56px}
-.tx-row{
-  display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:8px 24px;
-  padding:26px 8px;border-bottom:1px solid var(--hairline);
-  transition:padding-left .3s var(--ease),background .3s;
-}
-.tx-row:hover{padding-left:18px;background:rgba(255,255,255,.02)}
-.tx-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;color:rgba(237,227,204,.92)}
-.tx-price{font-size:13.5px;font-weight:300;color:rgba(191,144,48,.95);text-align:right;font-feature-settings:"tnum" 1;white-space:nowrap}
-.tx-meta{grid-column:1/-1;display:flex;justify-content:space-between;gap:18px}
-.tx-desc{font-size:11.5px;line-height:1.85;color:rgba(237,227,204,.45);max-width:420px}
-.tx-time{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(237,227,204,.35);white-space:nowrap;padding-top:3px}
-.tx-foot{margin-top:26px;font-size:12px;font-family:var(--serif);font-style:italic;color:rgba(237,227,204,.42);font-size:15px}
+/* ── Who it's for ───────────────────────── */
+.who-band{background:var(--sand)}
+.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border-top:1px solid var(--hair)}
+@media(max-width:860px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.who-grid{grid-template-columns:1fr}}
+.who-card{padding:40px 30px 40px 0;border-right:1px solid var(--hair);transition:transform .4s var(--ease)}
+.who-card:last-child{border-right:none;padding-right:0}
+@media(max-width:860px){.who-card{padding:36px 26px;border-right:1px solid var(--hair)}.who-card:nth-child(2n){border-right:none}}
+@media(max-width:520px){.who-card{border-right:none;border-bottom:1px solid var(--hair)}}
+.who-card:hover{transform:translateY(-4px)}
+.who-mark{width:26px;height:26px;margin-bottom:20px}
+.who-mark svg{width:100%;height:100%}
+.who-card h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:22px;color:var(--ink);margin-bottom:12px}
+.who-card p{font-size:12.5px;line-height:1.9;color:var(--soft)}
 
-/* ── The space gallery ────────────────── */
-.space-status{
-  display:inline-flex;align-items:center;gap:9px;padding:8px 18px;margin-top:22px;
-  border:1px solid rgba(160,78,38,.35);background:rgba(160,78,38,.08);
-  font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(232,173,121,.9);
-}
+/* ── Treatments ─────────────────────────── */
+.tx-band{background:var(--cream)}
+.tx-split{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+@media(max-width:880px){.tx-split{grid-template-columns:1fr;gap:46px}}
+.tx-figure{position:sticky;top:104px;overflow:hidden;border-radius:3px;box-shadow:var(--shadow)}
+@media(max-width:880px){.tx-figure{position:static}}
+.tx-figure img{width:100%;aspect-ratio:4/4.7;object-fit:cover;transition:transform 1.3s var(--ease)}
+.tx-figure:hover img{transform:scale(1.05)}
+.tx-figure figcaption{position:absolute;left:18px;bottom:14px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(251,247,239,.85);text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.tx-list{border-top:1px solid var(--hair);margin-top:40px}
+.tx-row{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:7px 24px;padding:25px 6px;border-bottom:1px solid var(--hair);transition:padding-left .4s var(--ease),background .4s}
+.tx-row:hover{padding-left:18px;background:rgba(234,220,198,.4)}
+.tx-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;color:var(--ink)}
+.tx-price{font-size:14px;color:var(--terra);text-align:right;white-space:nowrap;font-feature-settings:"tnum" 1}
+.tx-meta{grid-column:1/-1;display:flex;justify-content:space-between;gap:18px;align-items:baseline}
+.tx-desc{font-size:12.5px;line-height:1.8;color:var(--soft);max-width:440px}
+.tx-time{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.tx-foot{margin-top:28px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--soft)}
+
+/* ── The Space (gallery) ────────────────── */
+.space-status{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;margin-top:22px;border:1px solid rgba(162,74,34,.32);background:rgba(162,74,34,.07);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra)}
 .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:60px}
-.g-item{position:relative;overflow:hidden}
-.g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease)}
-.g-item:hover img{transform:scale(1.05)}
-.g-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(12,22,16,.78) 100%)}
-.g-cap{position:absolute;left:20px;right:20px;bottom:16px;z-index:2}
-.g-cap h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;color:var(--cream)}
-.g-cap p{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,227,204,.55);margin-top:4px}
+.g-item{position:relative;overflow:hidden;border-radius:3px}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.g-item:hover img{transform:scale(1.06)}
+.g-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(22,26,17,.82) 100%)}
+.g-cap{position:absolute;left:22px;right:22px;bottom:18px;z-index:2}
+.g-cap h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--cream)}
+.g-cap p{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(251,247,239,.66);margin-top:5px}
 .g-a{grid-column:span 7;aspect-ratio:16/10}
 .g-b{grid-column:span 5;aspect-ratio:16/13.4}
 .g-c{grid-column:span 5;aspect-ratio:16/13.4}
 .g-d{grid-column:span 7;aspect-ratio:16/10}
 @media(max-width:720px){.g-a,.g-b,.g-c,.g-d{grid-column:span 12;aspect-ratio:16/10}}
-.render-note{margin-top:18px;font-size:10px;letter-spacing:.12em;color:rgba(237,227,204,.28);text-align:center}
+.render-note{margin-top:20px;font-size:10px;letter-spacing:.1em;color:var(--faint);text-align:center}
+.render-note a{color:var(--terra);border-bottom:1px solid var(--hair-gold)}
 
-/* ── Brand band ───────────────────────── */
-.brand-band{position:relative;min-height:62vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+/* ── Brand quote band ───────────────────── */
+.brand-band{position:relative;min-height:66vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
 .brand-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.brand-band::after{content:'';position:absolute;inset:0;background:rgba(12,22,16,.55)}
-.brand-quote{position:relative;z-index:2;max-width:680px;padding:0 28px;text-align:center}
-.brand-quote .q{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:clamp(24px,3.6vw,34px);line-height:1.5;color:var(--cream);
-}
-.brand-quote .q em{color:#E8C977;font-style:italic}
-.brand-quote .a{margin-top:22px;font-size:9.5px;letter-spacing:.4em;text-transform:uppercase;color:rgba(237,227,204,.55)}
+.brand-band::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,22,12,.5),rgba(22,26,17,.62))}
+.brand-quote{position:relative;z-index:2;max-width:760px;padding:0 30px}
+.brand-quote .q{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(25px,3.6vw,37px);line-height:1.5;color:var(--cream)}
+.brand-quote .q em{color:var(--gold-lt);font-style:italic}
+.brand-quote .a{margin-top:24px;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:rgba(251,247,239,.6)}
 
-/* ── FAQ ──────────────────────────────── */
-.faq-list{max-width:720px;margin:60px auto 0;border-top:1px solid var(--hairline)}
-.faq-item{border-bottom:1px solid var(--hairline)}
-.faq-q{
-  width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;
-  padding:24px 8px;background:none;border:none;cursor:pointer;text-align:left;
-  font-family:var(--serif);font-style:italic;font-size:19px;color:rgba(237,227,204,.88);
-  transition:color .25s,padding-left .3s var(--ease);
-}
-.faq-q:hover{color:var(--cream);padding-left:16px}
-.faq-q .chev{font-family:var(--sans);font-size:18px;font-weight:200;color:rgba(191,144,48,.7);transition:transform .35s var(--ease);flex-shrink:0}
-.faq-item.open .faq-q .chev{transform:rotate(45deg)}
+/* ── FAQ ────────────────────────────────── */
+.faq-list{max-width:760px;margin:56px auto 0;border-top:1px solid var(--hair)}
+.faq-item{border-bottom:1px solid var(--hair)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:25px 6px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);transition:color .25s,padding-left .35s var(--ease)}
+.faq-q:hover{color:var(--terra);padding-left:14px}
+.faq-q .chev{font-family:var(--sans);font-size:20px;font-weight:200;color:var(--gold);transition:transform .4s var(--ease);flex-shrink:0}
+.faq-item.open .faq-q .chev{transform:rotate(45deg);color:var(--terra)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
-.faq-a p{padding:0 8px 26px;font-size:12.5px;line-height:2;color:rgba(237,227,204,.52);max-width:620px}
+.faq-a p{padding:0 6px 26px;font-size:13px;line-height:2;color:var(--soft);max-width:640px}
 
-/* ── Visit ────────────────────────────── */
-.visit-band{background:var(--grove)}
-.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:60px;align-items:start}
-@media(max-width:720px){.visit-grid{grid-template-columns:1fr}}
-.visit-block h3{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:rgba(191,144,48,.65);margin-bottom:20px}
-.visit-block p,.visit-block a.line{display:block;font-size:13.5px;line-height:2.1;color:rgba(237,227,204,.62)}
-.visit-block a.line:hover{color:var(--cream)}
-.visit-block .big{font-family:var(--serif);font-style:italic;font-size:22px;color:rgba(237,227,204,.9);line-height:1.6}
-.hours-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--hairline);padding:11px 2px;font-size:12.5px}
-.hours-row span:first-child{color:rgba(237,227,204,.5)}
-.hours-row span:last-child{color:rgba(237,227,204,.85);font-feature-settings:"tnum" 1}
-.visit-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
-.map-wrap{margin-top:60px;border:1px solid var(--hairline);overflow:hidden;filter:grayscale(.35) sepia(.12)}
-.map-wrap iframe{display:block;width:100%;height:340px;border:0}
+/* ── Visit ──────────────────────────────── */
+.visit-band{background:var(--sand)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:58px;align-items:start}
+@media(max-width:720px){.visit-grid{grid-template-columns:1fr;gap:40px}}
+.visit-block h3{font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.visit-block p,.visit-block a.line{display:block;font-size:14px;line-height:2.1;color:var(--soft)}
+.visit-block a.line{transition:color .25s}
+.visit-block a.line:hover{color:var(--terra)}
+.visit-block .big{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);line-height:1.55}
+.hours-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:12px 2px;font-size:13px}
+.hours-row span:first-child{color:var(--soft)}
+.hours-row span:last-child{color:var(--ink);font-feature-settings:"tnum" 1}
+.visit-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.map-wrap{margin-top:58px;border:1px solid var(--hair);border-radius:3px;overflow:hidden;filter:sepia(.18) saturate(.92)}
+.map-wrap iframe{display:block;width:100%;height:360px;border:0}
 
-/* ── Notify split ─────────────────────── */
-.notify-split{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:center}
-@media(max-width:860px){.notify-split{grid-template-columns:1fr;gap:44px}}
-.notify-figure{overflow:hidden}
-.notify-figure img{width:100%;aspect-ratio:4/3.4;object-fit:cover;transition:transform 1.2s var(--ease)}
-.notify-figure:hover img{transform:scale(1.04)}
-.notify-wrap{width:100%;max-width:440px;margin-top:30px}
-.notify-form{display:flex;border:1px solid rgba(237,227,204,.14);background:rgba(255,255,255,.03);transition:border-color .3s}
-.notify-form:focus-within{border-color:rgba(191,144,48,.45)}
-.notify-input{flex:1;background:none;border:none;outline:none;padding:16px 18px;font-family:var(--sans);font-weight:300;font-size:13px;color:var(--linen)}
-.notify-input::placeholder{color:rgba(237,227,204,.25)}
-.notify-btn{
-  padding:16px 24px;background:rgba(160,78,38,.2);border:none;border-left:1px solid rgba(237,227,204,.08);
-  font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:#E8AD79;cursor:pointer;transition:all .25s var(--ease);white-space:nowrap;
-}
-.notify-btn:hover{background:rgba(160,78,38,.4);color:var(--cream)}
-.notify-success{display:none;padding:16px;font-family:var(--serif);font-style:italic;font-size:17px;color:rgba(237,227,204,.7)}
-.notify-note{margin-top:12px;font-size:9.5px;color:rgba(237,227,204,.26);letter-spacing:.1em}
-.wa-btn{
-  display:inline-flex;align-items:center;gap:11px;padding:14px 28px;margin-top:24px;
-  border:1px solid rgba(191,144,48,.25);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(237,227,204,.6);transition:all .3s var(--ease);
-}
-.wa-btn:hover{border-color:rgba(191,144,48,.6);color:var(--cream);background:rgba(191,144,48,.08)}
-.wa-icon{width:14px;height:14px;fill:rgba(191,144,48,.7);flex-shrink:0}
+/* ── Notify ─────────────────────────────── */
+.notify-split{display:grid;grid-template-columns:5fr 6fr;gap:72px;align-items:center}
+@media(max-width:880px){.notify-split{grid-template-columns:1fr;gap:44px}}
+.notify-figure{overflow:hidden;border-radius:3px;box-shadow:var(--shadow)}
+.notify-figure img{width:100%;aspect-ratio:4/3.4;object-fit:cover;transition:transform 1.3s var(--ease)}
+.notify-figure:hover img{transform:scale(1.05)}
+.notify-wrap{width:100%;max-width:450px;margin-top:30px}
+.notify-form{display:flex;border:1px solid rgba(35,32,26,.22);background:var(--cream);transition:border-color .3s,box-shadow .3s}
+.notify-form:focus-within{border-color:var(--terra);box-shadow:0 0 0 3px rgba(162,74,34,.1)}
+.notify-input{flex:1;background:none;border:none;outline:none;padding:17px 18px;font-family:var(--sans);font-weight:300;font-size:13.5px;color:var(--ink)}
+.notify-input::placeholder{color:var(--faint)}
+.notify-btn{padding:17px 26px;background:var(--terra);border:none;font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);cursor:pointer;transition:background .25s var(--ease);white-space:nowrap}
+.notify-btn:hover{background:var(--terra-lt)}
+.notify-btn:disabled{opacity:.6;cursor:default}
+.notify-success{display:none;padding:17px 0;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--fern)}
+.notify-note{margin-top:13px;font-size:10px;color:var(--faint);letter-spacing:.08em}
+.wa-btn{display:inline-flex;align-items:center;gap:11px;padding:14px 28px;margin-top:24px;border:1px solid var(--hair-gold);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);transition:all .35s var(--ease)}
+.wa-btn:hover{border-color:var(--terra);color:var(--terra);background:rgba(162,74,34,.05)}
+.wa-icon{width:15px;height:15px;fill:var(--fern);flex-shrink:0}
 
-/* ── Footer ───────────────────────────── */
-.site-foot{border-top:1px solid var(--hairline);padding:60px 32px 40px}
-.foot-inner{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
-.foot-brand{font-family:var(--brand);font-style:italic;font-weight:800;font-size:19px;color:rgba(237,227,204,.55)}
-.foot-about{max-width:640px;font-size:11.5px;line-height:2;color:rgba(237,227,204,.34)}
+/* ── Footer ─────────────────────────────── */
+.site-foot{background:var(--forest);color:var(--cream);padding:64px 32px 44px}
+.foot-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.foot-brand{font-family:var(--brand);font-style:italic;font-weight:800;font-size:22px;color:rgba(251,247,239,.7)}
+.foot-about{max-width:660px;font-size:12px;line-height:2;color:rgba(251,247,239,.5)}
 .foot-links{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
-.foot-links a{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(237,227,204,.4);transition:color .25s}
-.foot-links a:hover{color:var(--ochre)}
-.foot-legal{font-size:9.5px;letter-spacing:.1em;color:rgba(237,227,204,.24);line-height:2}
+.foot-links a{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,247,239,.6);transition:color .25s}
+.foot-links a:hover{color:var(--gold-lt)}
+.foot-legal{font-size:9.5px;letter-spacing:.08em;color:rgba(251,247,239,.4);line-height:2}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+/* ── Reveal / motion ────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
 .reveal.in{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
+  *,*::before,*::after{animation-duration:.001s !important;animation-delay:0s !important;transition-duration:.001s !important}
   .reveal{opacity:1;transform:none}
+  .hero-img{animation:none;transform:scale(1.02)}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ── Header ─────────────────────────── -->
+<!-- ── Header ─────────────────────────────── -->
 <header class="site-head" id="siteHead">
   <a class="head-brand" href="#top" aria-label="VĀNA home">
     <svg class="head-mark" viewBox="0 0 200 240" fill="none" aria-hidden="true">
-      <g fill="none" stroke="#BF9030" stroke-linecap="round">
+      <g fill="none" stroke="#E6C277" stroke-linecap="round">
         <path d="M 65 24 C 80 12 120 12 135 24" stroke-width="7"/>
         <path d="M 74 17 C 86 9 114 9 126 17" stroke-width="5" opacity="0.6"/>
       </g>
-      <g fill="none" stroke="#EDE3CC" stroke-opacity="0.9" stroke-linecap="round">
+      <g fill="none" stroke="#FBF7EF" stroke-opacity="0.92" stroke-linecap="round">
         <path d="M 100 34 L 34 214" stroke-width="8"/>
         <path d="M 100 34 L 166 214" stroke-width="8"/>
         <path d="M 60 158 Q 100 150 140 158" stroke-width="5" opacity="0.65"/>
@@ -442,7 +442,7 @@ section{position:relative}
   </nav>
 </header>
 
-<!-- ── Hero ───────────────────────────── -->
+<!-- ── Hero ───────────────────────────────── -->
 <section class="hero" id="top">
   <img class="hero-img" src="/assets/img/hero-reception.jpg" alt="The reception at VĀNA Wellness Spa in Kakkanad — a curved wooden desk under warm light, surrounded by greenery" fetchpriority="high">
   <div class="hero-veil" aria-hidden="true"></div>
@@ -464,9 +464,10 @@ section{position:relative}
       <a class="btn btn-ghost" href="#treatments">See the Menu</a>
     </div>
   </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="ln"></span>Scroll</div>
 </section>
 
-<!-- ── Strip ──────────────────────────── -->
+<!-- ── Strip ──────────────────────────────── -->
 <div class="strip" role="presentation">
   <div class="strip-item"><div class="strip-big">Until 10:30 PM</div><div class="strip-small">Later than any spa in Kakkanad</div></div>
   <div class="strip-item"><div class="strip-big">Minutes away</div><div class="strip-small">From Infopark · Lift access</div></div>
@@ -474,14 +475,14 @@ section{position:relative}
   <div class="strip-item"><div class="strip-big">August 2026</div><div class="strip-small">Opening · Fit-out underway</div></div>
 </div>
 
-<!-- ── Story ──────────────────────────── -->
+<!-- ── Story ──────────────────────────────── -->
 <section class="story" id="story">
   <div class="sect">
     <div class="story-grid">
       <div class="story-copy reveal">
         <p class="eyebrow">Our Name</p>
-        <h2 class="sect-title">Vāna means forest</h2>
-        <p>In Sanskrit and in Malayalam, <em>vāna</em> is the forest — and a Kerala forest at last light is exactly what we built this place to feel like. Deep greens. Warm amber. Air that asks nothing of you.</p>
+        <h2 class="title" style="margin-top:16px">Vāna means forest</h2>
+        <p class="lead">In Sanskrit and in Malayalam, <em>vāna</em> is the forest — and a Kerala forest at last light is exactly what we built this place to feel like. Deep greens. Warm amber. Air that asks nothing of you.</p>
         <p>We are not a hotel spa, and we are not a clinic. Think of us the way you think of a favourite restaurant: a small place that does one beautiful thing properly, every single time. Here, that one thing is an hour that belongs entirely to you.</p>
       </div>
       <figure class="story-figure reveal">
@@ -491,34 +492,69 @@ section{position:relative}
   </div>
 </section>
 
-<!-- ── The VĀNA way ───────────────────── -->
-<section class="sect" id="way">
-  <div class="reveal t-center">
-    <p class="eyebrow center">The VĀNA Way</p>
-    <h2 class="sect-title">Your session begins<br>before you walk in</h2>
-    <p class="sect-sub">Three quiet courtesies that change everything — and that no other spa in Kakkanad offers. All three, every appointment.</p>
+<!-- ── The VĀNA Way ───────────────────────── -->
+<section class="way-band" id="way">
+  <div class="sect">
+    <div class="reveal t-center">
+      <span class="eyebrow center">The VĀNA Way</span>
+      <h2 class="title" style="margin-top:18px">Your session begins<br>before you walk in</h2>
+      <p class="sub">Three quiet courtesies that change everything — and that no other spa in Kakkanad offers. All three, every appointment.</p>
+    </div>
+    <div class="way-grid reveal">
+      <article class="way-card">
+        <div class="way-num" aria-hidden="true">01</div>
+        <h3>We ask before you arrive</h3>
+        <p>Three questions on WhatsApp the day before — how firm, where to focus, what to avoid. Two minutes of your time, so the hour is entirely yours.</p>
+      </article>
+      <article class="way-card">
+        <div class="way-num" aria-hidden="true">02</div>
+        <h3>Your therapist already knows</h3>
+        <p>You walk in, and the session simply begins. No clipboard at reception, no questions at the table — your preferences arrived before you did.</p>
+      </article>
+      <article class="way-card">
+        <div class="way-num" aria-hidden="true">03</div>
+        <h3>We follow up the same evening</h3>
+        <p>A short personal note after you leave: what was worked, what to stretch, what to carry into the week. Care that doesn't end at the door.</p>
+      </article>
+    </div>
+    <p class="way-foot reveal">Quiet, precise, personal — the way it should have always worked.</p>
   </div>
-  <div class="way-grid reveal">
-    <article class="way-card">
-      <div class="way-num" aria-hidden="true">01</div>
-      <h3>We ask before you arrive</h3>
-      <p>Three questions on WhatsApp the day before — how firm, where to focus, what to avoid. Two minutes of your time, so the hour is entirely yours.</p>
-    </article>
-    <article class="way-card">
-      <div class="way-num" aria-hidden="true">02</div>
-      <h3>Your therapist already knows</h3>
-      <p>You walk in, and the session simply begins. No clipboard at reception, no questions at the table — your preferences arrived before you did.</p>
-    </article>
-    <article class="way-card">
-      <div class="way-num" aria-hidden="true">03</div>
-      <h3>We follow up the same evening</h3>
-      <p>A short personal note after you leave: what was worked, what to stretch, what to carry into the week. Care that doesn't end at the door.</p>
-    </article>
-  </div>
-  <p class="way-foot reveal">Quiet, precise, personal — the way it should have always worked.</p>
 </section>
 
-<!-- ── Treatments ─────────────────────── -->
+<!-- ── Who it's for ───────────────────────── -->
+<section class="who-band" id="who">
+  <div class="sect">
+    <div class="reveal t-center">
+      <span class="eyebrow center">Who It's For</span>
+      <h2 class="title" style="margin-top:18px">Built with a few<br>people in mind</h2>
+      <p class="sub">Not everyone, and that's the point. VĀNA was shaped around the people Kakkanad keeps underserving.</p>
+    </div>
+    <div class="who-grid reveal">
+      <article class="who-card">
+        <div class="who-mark"><svg viewBox="0 0 32 32" fill="none" stroke="#A24A22" stroke-width="1.4"><path d="M16 4l8 5v7c0 6-4 9-8 11-4-2-8-5-8-11V9l8-5z" stroke-linejoin="round"/><path d="M12 16l3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Solo, and safe</h3>
+        <p>Women who want a serious massage without a second thought. Certified therapists, documented protocols, CCTV in common areas — never the rooms — and a choice of therapist where we can.</p>
+      </article>
+      <article class="who-card">
+        <div class="who-mark"><svg viewBox="0 0 32 32" fill="none" stroke="#A24A22" stroke-width="1.4"><rect x="6" y="7" width="20" height="13" rx="1.5"/><path d="M3 24h26M11 20v4M21 20v4" stroke-linecap="round"/></svg></div>
+        <h3>Desk-bound &amp; aching</h3>
+        <p>The Infopark shoulders, the laptop neck, the lower back that never quite lets go. Deep, deliberate work that actually reaches the knot you've been carrying for months.</p>
+      </article>
+      <article class="who-card">
+        <div class="who-mark"><svg viewBox="0 0 32 32" fill="none" stroke="#A24A22" stroke-width="1.4"><path d="M16 26s-9-5.5-9-12a5 5 0 019-3 5 5 0 019 3c0 6.5-9 12-9 12z" stroke-linejoin="round"/></svg></div>
+        <h3>The two of you</h3>
+        <p>A dedicated couples suite for side-by-side hours — an anniversary, or just a Tuesday that earned it. The 120-minute Signature is the best room in the house.</p>
+      </article>
+      <article class="who-card">
+        <div class="who-mark"><svg viewBox="0 0 32 32" fill="none" stroke="#A24A22" stroke-width="1.4"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>On your way home</h3>
+        <p>Minutes from Infopark, SmartCity and CUSAT, open until 10:30 PM. The last appointment starts at 9. The detour that isn't really a detour at all.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Treatments ─────────────────────────── -->
 <section class="tx-band" id="treatments">
   <div class="sect">
     <div class="tx-split">
@@ -529,8 +565,8 @@ section{position:relative}
       <div>
         <div class="reveal">
           <p class="eyebrow">The Menu</p>
-          <h2 class="sect-title">Six treatments,<br>done properly</h2>
-          <p class="sect-sub">Honest pricing, displayed and kept — what's written is what you pay. No add-on theatre at the table.</p>
+          <h2 class="title" style="margin-top:14px">Six treatments,<br>done properly</h2>
+          <p class="sub" style="margin-left:0">Honest pricing, displayed and kept — what's written is what you pay. No add-on theatre at the table.</p>
         </div>
         <div class="tx-list reveal">
           <div class="tx-row">
@@ -570,12 +606,12 @@ section{position:relative}
   </div>
 </section>
 
-<!-- ── The space ──────────────────────── -->
+<!-- ── The Space ──────────────────────────── -->
 <section class="sect" id="space">
   <div class="reveal t-center">
-    <p class="eyebrow center">The Space</p>
-    <h2 class="sect-title">Two floors,<br>built around a green view</h2>
-    <p class="sect-sub">2,500 square feet at E Tower, Athani — three treatment rooms, a couples suite, a steam-and-shower wet area, and a relaxation lounge that looks out into the trees. The fit-out is happening right now: partitions rising, light being tuned, rooms learning to be quiet.</p>
+    <span class="eyebrow center">The Space</span>
+    <h2 class="title" style="margin-top:18px">Two floors,<br>built around a green view</h2>
+    <p class="sub">2,500 square feet at E Tower, Athani — three treatment rooms, a couples suite, a steam-and-shower wet area, and a relaxation lounge that looks out into the trees. The fit-out is happening right now: partitions rising, light being tuned, rooms learning to be quiet.</p>
     <span class="space-status"><span class="badge-dot" aria-hidden="true"></span>Fit-out in progress · June 2026</span>
   </div>
   <div class="gallery reveal">
@@ -597,10 +633,10 @@ section{position:relative}
     </div>
   </div>
   <p class="render-note reveal">Design visualisations — watch the real build take shape on
-    <a href="https://www.instagram.com/vana_wellness_spa/" target="_blank" rel="noopener" style="color:rgba(191,144,48,.7)">Instagram</a></p>
+    <a href="https://www.instagram.com/vana_wellness_spa/" target="_blank" rel="noopener">Instagram</a></p>
 </section>
 
-<!-- ── Brand band ─────────────────────── -->
+<!-- ── Brand quote band ───────────────────── -->
 <section class="brand-band" aria-label="VĀNA brand philosophy">
   <img src="/assets/img/details-oils.jpg" alt="" aria-hidden="true" loading="lazy">
   <blockquote class="brand-quote reveal">
@@ -610,11 +646,11 @@ section{position:relative}
   </blockquote>
 </section>
 
-<!-- ── FAQ ────────────────────────────── -->
+<!-- ── FAQ ────────────────────────────────── -->
 <section class="sect" id="faq">
   <div class="reveal t-center">
-    <p class="eyebrow center">Good to Know</p>
-    <h2 class="sect-title">Questions, answered plainly</h2>
+    <span class="eyebrow center">Good to Know</span>
+    <h2 class="title" style="margin-top:18px">Questions, answered plainly</h2>
   </div>
   <div class="faq-list reveal">
     <div class="faq-item">
@@ -648,12 +684,12 @@ section{position:relative}
   </div>
 </section>
 
-<!-- ── Visit ──────────────────────────── -->
+<!-- ── Visit ──────────────────────────────── -->
 <section class="visit-band" id="visit">
   <div class="sect">
     <div class="reveal t-center">
-      <p class="eyebrow center">Visit</p>
-      <h2 class="sect-title">On your way home,<br>not out of your way</h2>
+      <span class="eyebrow center">Visit</span>
+      <h2 class="title" style="margin-top:18px">On your way home,<br>not out of your way</h2>
     </div>
     <div class="visit-grid reveal">
       <div class="visit-block">
@@ -661,14 +697,14 @@ section{position:relative}
         <p class="big">"E Tower," 1st &amp; 2nd Floor,<br>Athani, Kakkanad, Kochi 682030</p>
         <p style="margin-top:14px">Thrikkakara Municipality · Near Infopark &amp; SmartCity<br>Lift access · Parking nearby</p>
         <div class="visit-cta">
-          <a class="btn btn-ghost" href="https://share.google/J33BrEqedsUDC5wgM" target="_blank" rel="noopener">Open in Maps</a>
+          <a class="btn btn-dark" href="https://share.google/J33BrEqedsUDC5wgM" target="_blank" rel="noopener">Open in Maps</a>
         </div>
       </div>
       <div class="visit-block">
         <h3>Hours · From August 2026</h3>
         <div class="hours-row"><span>Monday – Sunday</span><span>11:00 AM – 10:30 PM</span></div>
         <div class="hours-row"><span>Last appointment</span><span>9:00 PM (90 min)</span></div>
-        <p style="margin-top:20px">
+        <p style="margin-top:22px">
           <a class="line" href="tel:+918129662890">+91 81296 62890</a>
           <a class="line" href="mailto:hello@vanaspa.com">hello@vanaspa.com</a>
         </p>
@@ -683,7 +719,7 @@ section{position:relative}
   </div>
 </section>
 
-<!-- ── Notify ─────────────────────────── -->
+<!-- ── Notify ─────────────────────────────── -->
 <section class="sect" id="notify">
   <div class="notify-split">
     <figure class="notify-figure reveal">
@@ -691,8 +727,8 @@ section{position:relative}
     </figure>
     <div class="reveal">
       <p class="eyebrow">Before Opening Day</p>
-      <h2 class="sect-title">Be first in</h2>
-      <p class="sect-sub">One message when the doors open — nothing before, nothing after. Founding members get preferred rates and first pick of appointment slots.</p>
+      <h2 class="title" style="margin-top:14px">Be first in</h2>
+      <p class="sub" style="margin-left:0">One message when the doors open — nothing before, nothing after. Founding members get preferred rates and first pick of appointment slots.</p>
       <div class="notify-wrap">
         <div class="notify-form" id="notifyForm" role="form" aria-label="Notify me when VĀNA opens">
           <input class="notify-input" type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" aria-label="Your email address"/>
@@ -712,7 +748,7 @@ section{position:relative}
   </div>
 </section>
 
-<!-- ── Footer ─────────────────────────── -->
+<!-- ── Footer ─────────────────────────────── -->
 <footer class="site-foot">
   <div class="foot-inner">
     <div class="foot-brand">VĀNA</div>
@@ -738,7 +774,7 @@ section{position:relative}
 </footer>
 
 <noscript>
-  <p style="text-align:center;padding:24px;font-family:var(--serif);font-style:italic;color:rgba(237,227,204,.55)">
+  <p style="text-align:center;padding:24px;font-family:'Cormorant Garamond',serif;font-style:italic;color:#564B3D">
     The notify-me form requires JavaScript. Message +91 81296 62890 on WhatsApp or write to hello@vanaspa.com.
   </p>
 </noscript>
@@ -771,7 +807,7 @@ async function handleNotify() {
   const input = document.getElementById('emailInput');
   const btn   = document.querySelector('.notify-btn');
   const email = input.value.trim();
-  if (!EMAIL_RE.test(email)) { input.style.outline='1px solid rgba(160,78,38,.6)'; input.focus(); return; }
+  if (!EMAIL_RE.test(email)) { input.style.outline='1px solid rgba(162,74,34,.7)'; input.focus(); return; }
   input.style.outline=''; btn.disabled=true; btn.textContent='Sending…';
   try {
     const res = await fetch('https://formspree.io/f/mvzvvydy', {
@@ -784,7 +820,7 @@ async function handleNotify() {
     document.getElementById('notifySuccess').style.display='block';
   } catch(e) {
     btn.disabled=false; btn.textContent='Try again';
-    input.style.outline='1px solid rgba(160,78,38,.6)';
+    input.style.outline='1px solid rgba(162,74,34,.7)';
   }
 }
 document.getElementById('emailInput').addEventListener('keydown', e => {
@@ -794,7 +830,7 @@ document.getElementById('emailInput').addEventListener('keydown', e => {
 /* Scroll reveal */
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
-},{threshold:.1});
+},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
