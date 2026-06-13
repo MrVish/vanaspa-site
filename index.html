@@ -515,6 +515,14 @@ body.menu-open{overflow:hidden}
 .fa-wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #1f7a40;animation:waPulse 2.8s ease-out infinite;pointer-events:none}
 @keyframes waPulse{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(1.55);opacity:0}}
 
+/* Ambient drifting leaves */
+.leaves{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;top:0;width:var(--w,24px);will-change:transform,translate;animation:leafFall var(--d,20s) linear var(--delay,0s) infinite,leafSway var(--s,5s) ease-in-out var(--delay,0s) infinite alternate}
+.leaf svg{width:100%;height:auto;display:block}
+@keyframes leafFall{0%{transform:translateY(-12vh) rotate(-10deg);opacity:0}12%{opacity:var(--o,.18)}88%{opacity:var(--o,.18)}100%{transform:translateY(116vh) rotate(32deg);opacity:0}}
+@keyframes leafSway{from{translate:-24px 0}to{translate:24px 0}}
+@media(prefers-reduced-motion:reduce){.leaves{display:none}}
+
 @media(max-width:780px){
   .head-nav{display:none}
   .nav-toggle{display:flex}
@@ -1054,6 +1062,20 @@ if(pxEls.length && mqFine && !mqReduce){
   addEventListener('scroll',req,{passive:true});
   addEventListener('resize',req,{passive:true});
   px();
+}
+
+/* Ambient drifting leaves */
+if(!mqReduce){
+  const LEAF='<svg viewBox="0 0 32 46" fill="none"><path d="M16 1C27 11 28 30 16 45 4 30 5 11 16 1Z" fill="currentColor"/><path d="M16 6V40" stroke="rgba(20,24,16,.22)" stroke-width="1"/></svg>';
+  const cols=['#46603A','#6E7E5C','#C06A38','#E6C277','#9A7A2E'];
+  const N = innerWidth<780 ? 5 : 9;
+  const layer=document.createElement('div'); layer.className='leaves'; layer.setAttribute('aria-hidden','true');
+  let h='';
+  for(let i=0;i<N;i++){
+    const left=(Math.random()*100).toFixed(1), w=(13+Math.random()*22).toFixed(0), d=(15+Math.random()*13).toFixed(1), s=(4+Math.random()*3.5).toFixed(1), delay=(-Math.random()*32).toFixed(1), o=(0.1+Math.random()*0.15).toFixed(2), c=cols[Math.floor(Math.random()*cols.length)], blur=Math.random()<0.45?'filter:blur(.7px);':'';
+    h+=`<i class="leaf" style="left:${left}%;--w:${w}px;--d:${d}s;--s:${s}s;--delay:${delay}s;--o:${o};color:${c};${blur}">${LEAF}</i>`;
+  }
+  layer.innerHTML=h; document.body.appendChild(layer);
 }
 </script>
 
