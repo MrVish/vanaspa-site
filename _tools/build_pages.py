@@ -26,6 +26,7 @@ EMAIL_2 = "vana.serene.llp@gmail.com"
 ADDRESS_LINES = ["E Tower, 1st &amp; 2nd Floor, Kollamkudimugal Road", "Athani, Kakkanad, Kochi 682030"]
 MAPS_URL = "https://share.google/J33BrEqedsUDC5wgM"
 INSTAGRAM = "https://www.instagram.com/vana_wellness_spa/"
+REVIEW_URL = "https://g.page/r/CfdIXf59w68UEBM/review"
 
 # ── Menu: single source of prices (INR) ──────────────────────────────────────
 # Mirrors the printed treatment booklet.
@@ -188,6 +189,7 @@ FOOT_MORE = [
     ("/journal/", "Journal"),
     ("/#visit", "Hours &amp; directions"),
     (INSTAGRAM, "Instagram"),
+    (REVIEW_URL, "Review us on Google"),
 ]
 
 

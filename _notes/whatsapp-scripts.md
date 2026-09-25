@@ -3,8 +3,7 @@
 To set these up: WhatsApp Business → Settings → Business tools. Add each script under **Quick replies** with the
 shortcut shown (type `/` in a chat to pick one). Swap anything in `[brackets]` before sending.
 
-Replace `[REVIEW LINK]` everywhere with your Google review link. To find it, open your Business Profile on Google,
-choose **Ask for reviews**, and copy the link.
+Google review link (already filled in below): https://g.page/r/CfdIXf59w68UEBM/review
 
 ---
 
@@ -130,7 +129,7 @@ knots and desk tension → **Deep Tissue** (vanaspa.com/deep-tissue-massage-kakk
 > stretch or tip]. If you'd like to keep it from building back up, [2–4 weeks] is a good time to come again.
 >
 > If you have a minute, even a short Google review about your visit would really help a new local place like
-> ours: [REVIEW LINK]
+> ours: https://g.page/r/CfdIXf59w68UEBM/review
 
 ### `/return14` — Nudge to come back (day 7–10, only if they haven't rebooked)
 > Hi [Name], hope you've been feeling the difference since your [treatment]. If you'd like to come back before
