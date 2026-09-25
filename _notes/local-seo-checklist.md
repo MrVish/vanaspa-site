@@ -70,7 +70,7 @@ memberships, then the couples suite.
 Ask every guest, not just the happy ones, with the direct review link, a couple of hours after the session:
 
 > Thank you for coming to VĀNA today. If you have a minute, even a short Google review about your
-> experience would really help a new local business like ours: <review link>
+> experience would really help a new local business like ours: https://g.page/r/CfdIXf59w68UEBM/review
 
 - Never offer a discount or freebie in exchange for a review. Google does not allow it.
 - Don't tell guests what words to use.

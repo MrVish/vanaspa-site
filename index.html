@@ -19,6 +19,9 @@
   gtag('js', new Date());
 
   gtag('config', 'G-7RVEWWMJKN');
+
+  /* Booking-intent events: WhatsApp, call, email and directions taps */
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href'),ev=/wa\.me\//.test(h)?'whatsapp_click':/^tel:/.test(h)?'phone_click':/^mailto:/.test(h)?'email_click':/share\.google|google\.[a-z.]+\/maps/.test(h)?'directions_click':null;if(!ev)return;var s=a.closest('section[id],header,footer,.float-actions,.fa-wa,nav');gtag('event',ev,{link_location:s?(s.id||s.className.split(' ')[0]||s.tagName.toLowerCase()):'page',link_text:(a.textContent.trim()||a.getAttribute('aria-label')||'').slice(0,60)});});
 </script>
 
 <title>VĀNA Wellness Spa Kakkanad | Massage &amp; Spa near Infopark, Kochi</title>
@@ -1294,6 +1297,7 @@ body.menu-open{overflow:hidden}
       <a href="/facials-body-care/">Facials &amp; body</a>
       <a href="/manicure-pedicure-kakkanad/">Manicure &amp; pedicure</a>
       <a href="/spa-near-infopark/">Near Infopark</a>
+      <a href="/assets/vana-treatment-menu.pdf" target="_blank" rel="noopener">Download the menu (PDF)</a>
     </nav>
   </div>
 </section>
@@ -1507,6 +1511,7 @@ body.menu-open{overflow:hidden}
       <a href="/journal/">Journal</a>
       <a href="https://www.instagram.com/vana_wellness_spa/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://wa.me/918129662890" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://g.page/r/CfdIXf59w68UEBM/review" target="_blank" rel="noopener">Review us on Google</a>
     </nav>
     <nav class="foot-links small" aria-label="Treatments">
       <a href="/massage-kakkanad/">Massage in Kakkanad</a>

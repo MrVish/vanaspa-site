@@ -1,0 +1,246 @@
+{
+  "name": "VĀNA — WhatsApp auto-reply & lead funnel",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ]
+      },
+      "id": "8dd8e59a-1c1e-5646-9f4e-149e560bff3b",
+      "name": "WhatsApp Trigger",
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a4fb09ea-c258-5060-8a2f-ead5a6d9ca7b",
+      "name": "Test: sample message",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Sends one fake incoming message through the funnel so you can check the Leads sheet fills in.\n// Replies will fail (the number is fake) — that's expected; the lead row should still appear.\nconst now = Math.floor(Date.now() / 1000);\nreturn [{ json: { entry: [{ changes: [{ value: {\n  messaging_product: 'whatsapp',\n  metadata: { phone_number_id: 'TEST' },\n  contacts: [{ profile: { name: 'Test Guest' }, wa_id: '910000000000' }],\n  messages: [{ from: '910000000000', id: 'wamid.test' + now, timestamp: String(now), type: 'text',\n               text: { body: \"Hi, what's the price for a deep tissue massage?\" } }],\n} }] }] } }];"
+      },
+      "id": "b9de1af5-fdf6-583d-b263-d25200e0937b",
+      "name": "Sample payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// VĀNA WhatsApp funnel — the \"Decide replies & lead\" Code node.\n// Kept as a separate file so it can be tested; build_workflow.py embeds it into the workflow JSON.\n// Input: WhatsApp Cloud API webhook payloads. Output: items with kind = 'reply' (send via Graph API)\n// or kind = 'lead' (upsert into the Leads sheet).\n\nconst CFG = {\n  site: 'https://vanaspa.com',\n  brochureUrl: 'https://vanaspa.com/assets/vana-treatment-menu.pdf',\n  mapsUrl: 'https://share.google/J33BrEqedsUDC5wgM',\n  instagram: 'https://www.instagram.com/vana_wellness_spa/',\n  lat: 10.01981,\n  lng: 76.35331,\n  address: 'E Tower, 1st & 2nd Floor, Kollamkudimugal Road, Athani, Kakkanad, Kochi 682030',\n  cooldownHours: 12,          // don't repeat the same automatic answer to one person within this window\n  maxAgeSeconds: 600,         // never auto-reply to messages older than this (webhook retries, backlogs)\n  openingMonthEnds: '2026-10-19T00:00:00+05:30',\n};\n\n// ── Helpers ────────────────────────────────────────────────────────────────\nconst nowMs = Date.now();\nconst ist = new Date(nowMs + 5.5 * 3600e3);               // IST clock via UTC getters\nconst istISO = ist.toISOString().replace('T', ' ').slice(0, 16);\nconst day = ist.getUTCDay();                               // 0 Sun … 6 Sat\nconst mins = ist.getUTCHours() * 60 + ist.getUTCMinutes();\nconst weekend = day === 0 || day === 5 || day === 6;       // Fri–Sun\nconst openMin = weekend ? 11 * 60 : 12 * 60;\nconst closeMin = weekend ? 21 * 60 + 30 : 21 * 60;\nconst isOpen = mins >= openMin && mins < closeMin;\nconst tomorrowWeekend = day === 4 || day === 5 || day === 6;     // Thu, Fri, Sat → Fri–Sun hours tomorrow\nconst opensText = mins >= closeMin\n  ? (tomorrowWeekend ? 'at 11 AM tomorrow' : 'at 12 PM tomorrow')\n  : (weekend ? 'at 11 AM today' : 'at 12 PM today');\nconst closedLine = isOpen ? '' : `\\n\\nWe're closed right now — we'll reply ${opensText}.`;\nconst openingMonth = nowMs < Date.parse(CFG.openingMonthEnds);\n\nconst text = (to, body) => ({ messaging_product: 'whatsapp', to, type: 'text', text: { body, preview_url: true } });\n\n// ── Intent and interest detection ─────────────────────────────────────────\nconst INTENTS = [\n  ['menu',     /\\b(menu|price|prices|pricing|rate|rates|cost|charge|charges|tariff|brochure|list|services|treatments?|how much|ethra|ethrayanu|rate entha)\\b/],\n  ['location', /\\b(location|locate|where|address|map|maps|direction|directions|route|parking|evide|evideya|sthalam|landmark)\\b/],\n  ['hours',    /\\b(hours|timing|timings|open|opening|close|closing|till when|until when|working time)\\b/],\n  ['website',  /\\b(website|site|web|link|instagram|insta)\\b/],\n  ['couples',  /\\b(couple|couples|partner|wife|husband|anniversary|honeymoon|together|two of us)\\b/],\n  ['offers',   /\\b(offer|offers|discount|membership|memberships|package|packages|prepaid|gift|voucher|founding|return14|afternoon|early|bring)\\b/],\n  ['female',   /\\b(female|lady|ladies|woman|women) (therapist|staff|masseuse)|\\bfemale therapist\\b/],\n  ['book',     /\\b(book|booking|appointment|slot|slots|available|availability|reserve|reservation|today|tomorrow|tonight|this evening|walk ?in)\\b|i'?d like to book/],\n  ['human',    /\\b(call me|talk to|speak to|human|manager|staff|person|complaint|problem|issue|refund|cancel|reschedule)\\b/],\n];\nconst INTERESTS = [\n  ['deep tissue', /deep ?tissue/], ['swedish', /swedish/], ['balinese', /balinese/], ['sports', /sports?/],\n  ['aromatherapy', /aroma/], ['four hands', /four ?hands?|4 ?hands?/], ['couples', /couple/],\n  ['signature', /signature/], ['reflexology', /reflexology|foot/], ['head & scalp', /head|scalp/],\n  ['neck, back & shoulders', /neck|back|shoulder/], ['facial', /facial/], ['manicure', /manicure/],\n  ['pedicure', /pedicure/], ['scrub / wrap', /scrub|wrap/], ['de-tan', /de-?tan/], ['steam', /steam/],\n  ['membership', /membership|monthly/], ['prepaid / gift', /prepaid|gift|voucher|bronze|silver|gold|platinum/],\n];\n\n// ── Reply builders ────────────────────────────────────────────────────────\nconst R = {\n  welcome: (to, name) => ({\n    messaging_product: 'whatsapp', to, type: 'interactive',\n    interactive: {\n      type: 'list',\n      body: { text: `Welcome to VĀNA Wellness Spa${name ? ', ' + name.split(' ')[0] : ''} 🌿\\nA boutique spa in Athani, Kakkanad — a few minutes from Infopark, open every day into the evening.\\n\\nTap below for what you need, or just type your question — our team replies personally.${closedLine}` },\n      footer: { text: 'vanaspa.com' },\n      action: {\n        button: 'How can we help?',\n        sections: [{\n          title: 'VĀNA Wellness Spa',\n          rows: [\n            { id: 'menu', title: 'Menu & prices', description: 'Our treatment brochure (PDF)' },\n            { id: 'book', title: 'Book a session', description: 'Tell us a day and time' },\n            { id: 'location', title: 'Location & parking', description: 'E Tower, Athani, Kakkanad' },\n            { id: 'couples', title: 'Couples suite', description: 'Private steam & shower for two' },\n            { id: 'offers', title: 'Offers & memberships', description: openingMonth ? 'Opening Month offers until 18 Oct' : 'Memberships, prepaid & gift cards' },\n            { id: 'hours', title: 'Opening hours', description: 'Open every day' },\n            { id: 'website', title: 'Website & Instagram', description: 'See the space and the full menu' },\n            { id: 'human', title: 'Talk to our team', description: 'We reply personally' },\n          ],\n        }],\n      },\n    },\n  }),\n  menu: (to) => [\n    { messaging_product: 'whatsapp', to, type: 'document',\n      document: { link: CFG.brochureUrl, filename: 'VANA-Treatment-Menu.pdf', caption: 'The VĀNA treatment menu. Every price is the full price.' } },\n    text(to, `A few favourites:\\n• Swedish Restore — 60 min ₹2,500 · 90 min ₹3,200\\n• Deep Tissue Release — 60 min ₹2,800 · 90 min ₹3,500 (steam & shower included)\\n• Couples Signature — 90 min ₹5,700 for two\\n• Neck, Back & Shoulders — 30 min ₹1,500\\n\\nFull menu online: ${CFG.site}/#treatments\\n\\nWould you like to book? Send the treatment, day and time.`),\n  ],\n  location: (to) => [\n    { messaging_product: 'whatsapp', to, type: 'location',\n      location: { latitude: CFG.lat, longitude: CFG.lng, name: 'VĀNA Wellness Spa', address: CFG.address } },\n    text(to, `We're at E Tower, 1st & 2nd Floor, Kollamkudimugal Road, Athani, Kakkanad — a few minutes from Infopark. Parking on site, lift to both floors.\\n\\nGoogle Maps: ${CFG.mapsUrl}`),\n  ],\n  hours: (to) => [text(to, `We're open every day:\\nMonday – Thursday, 12 PM – 9 PM\\nFriday – Sunday, 11 AM – 9:30 PM\\n\\nThe last session starts 90 minutes before closing.`)],\n  website: (to) => [text(to, `Website: ${CFG.site}\\nMenu & prices: ${CFG.site}/#treatments\\nOffers & memberships: ${CFG.site}/offers/\\nInstagram: ${CFG.instagram}`)],\n  couples: (to) => [text(to, `Our couples suite has its own private steam and shower — it's the one room we hold back, so evenings and weekends go first.\\n\\nThe Couples Signature (scrub, massage and a private 15-minute steam, side by side) is ₹5,700 for 90 min or ₹6,500 for 120 min, for both of you.\\n\\nMore: ${CFG.site}/couples-spa-kakkanad/\\n\\nSend two or three times that work and we'll hold the best one.`)],\n  offers: (to) => [text(to, (openingMonth\n    ? `Opening Month offers, until 18 October — say the word when you book:\\n• FOUNDING — first 100 guests: a year of priority evening slots, steam with every massage, and a monthly 60→90 upgrade\\n• RETURN14 — come back within 14 days for a free Head & Scalp\\n• BRING — bring a first-time friend: their steam is on us\\n• AFTERNOON — weekdays 11 AM – 4 PM, free steam with any massage\\n• EARLY — buy a prepaid tier and your first session goes 60→90\\n\\n`\n    : '') + `Memberships from ₹2,000/month, prepaid tiers worth up to ₹71,500, and gift cards at face value.\\n\\nDetails: ${CFG.site}/offers/`)],\n  book: (to) => [text(to, `Lovely — send us the treatment, the day and the time you'd like (and whether you'd prefer a female therapist). Our team will confirm your slot personally.${closedLine}`)],\n  female: (to) => [text(to, `Of course — we'll book a female therapist for you. Every room is private with its own bath. Which treatment, day and time would you like?${closedLine}`)],\n  human: (to) => [text(to, `Of course — someone from our team will reply here personally.${closedLine}`)],\n};\n\n// ── Main ──────────────────────────────────────────────────────────────────\nconst store = $getWorkflowStaticData('global');\nstore.leads = store.leads || {};\nconst out = [];\n\nfor (const item of $input.all()) {\n  const j = item.json;\n  const value = j.entry?.[0]?.changes?.[0]?.value ?? j.body?.entry?.[0]?.changes?.[0]?.value ?? j;\n  const msg = value?.messages?.[0];\n  if (!msg || !msg.from) continue;                        // delivery/read statuses, echoes, etc.\n\n  const phoneId = value.metadata?.phone_number_id;\n  const from = msg.from;\n  const name = value.contacts?.[0]?.profile?.name || '';\n  let body = '', tapped = '';\n  if (msg.type === 'text') body = msg.text?.body || '';\n  else if (msg.type === 'interactive') {\n    const r = msg.interactive?.list_reply || msg.interactive?.button_reply;\n    tapped = r?.id || ''; body = r?.title || '';\n  } else if (msg.type === 'button') body = msg.button?.text || '';\n  else body = `[${msg.type}]`;\n  const t = body.toLowerCase();\n\n  // Lead memory (per phone number)\n  const isNew = !store.leads[from];\n  const lead = store.leads[from] || { first: istISO, count: 0, sent: {}, interests: [], lastIn: 0 };\n  const firstInWindow = nowMs - (lead.lastIn || 0) > CFG.cooldownHours * 3600e3;\n  lead.count += 1;\n  lead.lastIn = nowMs;\n\n  // What do they want?\n  let intents = [];\n  if (tapped) intents = [tapped];\n  else if (msg.type === 'text') intents = INTENTS.filter(([, re]) => re.test(t)).map(([k]) => k);\n  if (intents.includes('female')) intents = intents.filter(i => i !== 'book');\n  for (const [k, re] of INTERESTS) if (re.test(t) && !lead.interests.includes(k)) lead.interests.push(k);\n\n  // Where did they come from?\n  let source = '';\n  if (isNew) {\n    if (msg.referral) source = 'Ad: ' + (msg.referral.headline || msg.referral.source_url || msg.referral.source_type || 'click-to-WhatsApp');\n    else if (/vāna/i.test(body)) source = 'Website';                 // the site's pre-filled messages spell VĀNA with the macron\n    else source = 'WhatsApp (direct)';\n  }\n\n  // Which automatic replies?\n  const fresh = nowMs / 1000 - Number(msg.timestamp || nowMs / 1000) <= CFG.maxAgeSeconds;\n  const cooled = k => tapped || nowMs - (lead.sent[k] || 0) > CFG.cooldownHours * 3600e3;\n  const replies = [];\n  if (fresh) {\n    for (const k of intents) {\n      if (R[k] && k !== 'welcome' && cooled(k)) { replies.push(...R[k](from)); lead.sent[k] = nowMs; }\n    }\n    // Welcome list: first message in a while with no clear question, or a brand-new contact after their answer\n    if ((!intents.length && firstInWindow) || (isNew && intents.length && !tapped)) {\n      if (cooled('welcome')) { replies.push(R.welcome(from, name)); lead.sent.welcome = nowMs; }\n    }\n  }\n  store.leads[from] = lead;\n\n  // Blue ticks first, then replies in order\n  if (replies.length) out.push({ json: { kind: 'reply', phone_number_id: phoneId, payload: { messaging_product: 'whatsapp', status: 'read', message_id: msg.id } } });\n  for (const p of replies) out.push({ json: { kind: 'reply', phone_number_id: phoneId, payload: p } });\n\n  // Lead row: only the columns we own; never overwrite a status the team has set\n  const row = {\n    kind: 'lead',\n    phone: '+' + from,\n    name,\n    last_contact: istISO,\n    messages: lead.count,\n    interests: lead.interests.join(', '),\n    last_intent: intents.join(', ') || (msg.type === 'text' ? 'other' : msg.type),\n    last_message: body.slice(0, 300),\n  };\n  if (isNew) Object.assign(row, { status: 'New enquiry', source, first_contact: lead.first });\n  if (intents.includes('book') || intents.includes('female')) row.last_booking_request = istISO;\n  out.push({ json: row });\n}\n\nreturn out;\n"
+      },
+      "id": "7d5099ce-54c6-5dd5-a884-46e8f2365138",
+      "name": "Decide replies & lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "20342de0-f672-54f5-b513-276a4140157b",
+              "leftValue": "={{ $json.kind }}",
+              "rightValue": "reply",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d6d272ce-f70b-5c42-a2ab-67d0d8e13fa4",
+      "name": "Reply or lead?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        700,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $json.phone_number_id }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.payload) }}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 700
+            }
+          }
+        }
+      },
+      "id": "b28b9cbd-311b-5915-b4cd-0c7c39a1e53c",
+      "name": "Send WhatsApp reply",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        -100
+      ],
+      "onError": "continueRegularOutput",
+      "notes": "Sends one message at a time, in order. Credential: Header Auth with Name = Authorization, Value = Bearer <your permanent WhatsApp token>."
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(i => { const { kind, ...row } = i.json; return { json: row }; });"
+      },
+      "id": "351fff3e-5761-57ea-bceb-5aea217279f5",
+      "name": "Lead columns only",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "phone"
+          ],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW"
+        }
+      },
+      "id": "8da085d6-6edb-50c7-bdbc-c241e88a852a",
+      "name": "Save lead to sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1200,
+        100
+      ],
+      "notes": "Paste your Leads sheet URL in Document. Matches on the phone column; only writes the columns it owns, so status and notes you type are never overwritten."
+    }
+  ],
+  "connections": {
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "Decide replies & lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Test: sample message": {
+      "main": [
+        [
+          {
+            "node": "Sample payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample payload": {
+      "main": [
+        [
+          {
+            "node": "Decide replies & lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decide replies & lead": {
+      "main": [
+        [
+          {
+            "node": "Reply or lead?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply or lead?": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Lead columns only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead columns only": {
+      "main": [
+        [
+          {
+            "node": "Save lead to sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata"
+  },
+  "pinData": {}
+}
