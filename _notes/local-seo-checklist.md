@@ -12,6 +12,8 @@ VĀNA Wellness Spa
 E Tower, 1st & 2nd Floor, Kollamkudimugal Road, Athani, Kakkanad, Kochi, Kerala 682030
 +91 81296 62890
 https://vanaspa.com
+hello@vanaspa.com · vana.serene.llp@gmail.com
+Plus code: 7J2R2993+W8 (10.01981, 76.35331)
 Mon–Thu 12:00 PM – 9:00 PM · Fri–Sun 11:00 AM – 9:30 PM
 ```
 

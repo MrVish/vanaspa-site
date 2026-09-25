@@ -22,6 +22,7 @@ PHONE_DISPLAY = "+91 81296 62890"
 PHONE_TEL = "+918129662890"
 WA_NUMBER = "918129662890"
 EMAIL = "hello@vanaspa.com"
+EMAIL_2 = "vana.serene.llp@gmail.com"
 ADDRESS_LINES = ["E Tower, 1st &amp; 2nd Floor, Kollamkudimugal Road", "Athani, Kakkanad, Kochi 682030"]
 MAPS_URL = "https://share.google/J33BrEqedsUDC5wgM"
 INSTAGRAM = "https://www.instagram.com/vana_wellness_spa/"
@@ -75,7 +76,7 @@ DESCRIPTIONS = {
     "deep": "Slow, deliberate work into chronic knots. Built for desk shoulders and stubborn backs.",
     "sports": "Targeted work for overused muscles — warm-up, release, recover. For runners, gym regulars and weekend athletes.",
     "fourhands": "Two therapists, one synchronised rhythm. Twice the hands, half the thinking — our most indulgent hour.",
-    "signature": "Our finest ritual — scrub, massage and a private steam, for one.",
+    "signature": "Our finest ritual — scrub, massage and a private 15-minute steam &amp; shower, for one.",
     "couples": "The Signature ritual side by side in the couples suite, which has its own steam and shower.",
     "reflexology": "Pressure-point work for tired feet and lower legs. The quickest reset on the menu.",
     "head": "A focused head, scalp and neck reset. The fastest way to put down a long day.",
@@ -215,7 +216,7 @@ def footer():
       <div>
         <div class="foot-brand">VĀNA</div>
         <p>VĀNA Wellness Spa — a boutique wellness spa at E Tower, Kollamkudimugal Road, Athani, Kakkanad, Kochi 682030, a few minutes from Infopark and SmartCity.<br>
-        <a href="tel:{tel}">{phone}</a> · <a href="mailto:{email}">{email}</a><br>
+        <a href="tel:{tel}">{phone}</a><br><a href="mailto:{email}">{email}</a> · <a href="mailto:{email2}">{email2}</a><br>
         Mon–Thu 12 PM – 9 PM · Fri–Sun 11 AM – 9:30 PM</p>
       </div>
       <div><h4>Treatments</h4><ul>{t}</ul></div>
@@ -223,7 +224,7 @@ def footer():
     </div>
     <p class="foot-legal">VĀNA Wellness Spa is operated by Vana Serene LLP, Ernakulam, Kerala. Prices in INR.</p>
   </div>
-</footer>""".format(t=t, m=m, tel=PHONE_TEL, phone=PHONE_DISPLAY, email=EMAIL)
+</footer>""".format(t=t, m=m, tel=PHONE_TEL, phone=PHONE_DISPLAY, email=EMAIL, email2=EMAIL_2)
 
 
 VISIT = """<section class="band band-sand" id="visit">
@@ -242,11 +243,11 @@ VISIT = """<section class="band band-sand" id="visit">
         <div class="hrs"><span>Monday – Thursday</span><span>12:00 PM – 9:00 PM</span></div>
         <div class="hrs"><span>Friday – Sunday</span><span>11:00 AM – 9:30 PM</span></div>
         <div class="hrs"><span>Last session</span><span>90 min before close</span></div>
-        <p style="margin-top:14px">WhatsApp or call <a href="tel:{tel}">{phone}</a></p>
+        <p style="margin-top:14px">WhatsApp or call <a href="tel:{tel}">{phone}</a><br><a href="mailto:{e1}">{e1}</a> · <a href="mailto:{e2}">{e2}</a></p>
       </div>
     </div>
   </div>
-</section>""".format(a0=ADDRESS_LINES[0], a1=ADDRESS_LINES[1], maps=MAPS_URL, tel=PHONE_TEL, phone=PHONE_DISPLAY)
+</section>""".format(a0=ADDRESS_LINES[0], a1=ADDRESS_LINES[1], maps=MAPS_URL, tel=PHONE_TEL, phone=PHONE_DISPLAY, e1=EMAIL, e2=EMAIL_2)
 
 
 def cta_band(title, text, book_msg):
@@ -670,7 +671,7 @@ PAGES.append(dict(
 <li><span class="n">01</span><div><b>Before you arrive</b>Each of you answers our three WhatsApp questions, so both therapists know your pressure, focus areas and anything to avoid.</div></li>
 <li><span class="n">02</span><div><b>A body scrub</b>A full-body exfoliation to wake the skin and warm the muscles.</div></li>
 <li><span class="n">03</span><div><b>Side-by-side massage</b>Two therapists, one room. Pressure is set for each of you separately — one firm, one gentle is fine.</div></li>
-<li><span class="n">04</span><div><b>A private steam</b>The suite's own steam and shower, just for the two of you.</div></li>
+<li><span class="n">04</span><div><b>A private steam</b>Fifteen minutes in the suite's own steam and shower, just for the two of you.</div></li>
 </ol>
 <h2>Booking the suite</h2>
 <p>There's one couples suite, so evenings and weekends go first. Message us on WhatsApp with two or three possible times and we'll hold the best one. Tell us if it's a special occasion.</p>
@@ -681,7 +682,7 @@ PAGES.append(dict(
     faqs=[
         ("How much is a couples massage at VĀNA?", "The Couples Signature is ₹5,700 for 90 minutes and ₹6,500 for 120 minutes, for both of you, including the private steam. Two of Us — 90 minutes plus a 30-minute reflexology each — is ₹6,400."),
         ("Can we have different pressures?", "Yes. You each have your own therapist, and each of you answers the intake questions separately."),
-        ("Does the couples suite have a steam room?", "Yes, the suite has its own private steam and shower."),
+        ("Does the couples suite have a steam room?", "Yes, the suite has its own private steam and shower, and the Couples Signature includes 15 minutes in it."),
         ("Can I book the couples suite for an anniversary or birthday?", "Of course — tell us when you book so we can prepare the room."),
         ("How far ahead should we book?", "The couples suite is the one room we hold back, and evenings fill first. A few days ahead is safest for Friday to Sunday."),
     ],
@@ -812,7 +813,7 @@ PAGES.append(dict(
 <div class="price-row"><span class="nm">The Founding Hundred</span><span class="pr">Say "FOUNDING"</span><span class="ds">The first 100 guests of Opening Month become Founding Members for a year: priority on evening slots, Steam &amp; Shower with every massage (already included with Deep Tissue, Sports and the Signature), and once every month, a 60-minute session upgraded to 90 — on us.</span></div>
 <div class="price-row"><span class="nm">Come Back in 14 Days</span><span class="pr">Say "RETURN14"</span><span class="ds">Book your second session within 14 days of your first and a Head &amp; Scalp is added to it, complimentary.</span></div>
 <div class="price-row"><span class="nm">Bring Someone</span><span class="pr">Say "BRING"</span><span class="ds">Bring a first-time friend to a booking: their Steam &amp; Shower is on us, and your next Express is complimentary.</span></div>
-<div class="price-row"><span class="nm">Afternoon Reset</span><span class="pr">Say "AFTERNOON"</span><span class="ds">Weekday afternoons, until 4 PM: any massage includes Steam &amp; Shower, free.</span></div>
+<div class="price-row"><span class="nm">Afternoon Reset</span><span class="pr">Say "AFTERNOON"</span><span class="ds">Weekdays, 11 AM – 4 PM: any massage includes Steam &amp; Shower, free.</span></div>
 <div class="price-row"><span class="nm">Set Aside, Early</span><span class="pr">Say "EARLY"</span><span class="ds">Buy any prepaid tier — Bronze to Platinum — in Opening Month, and your first session is upgraded 60 → 90 minutes, with a Steam &amp; Shower, on us.</span></div>
 </div>
 <p class="price-note">Offers run 18 September – 18 October 2026 and may be combined with each other, not with other promotions. The Founding Hundred closes at guest 100 or 18 October, whichever comes first; Founding benefits run for one year from your first visit. Complimentary add-ons are subject to room availability on the day.</p>
