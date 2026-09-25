@@ -251,7 +251,7 @@ VISIT = """<section class="band band-sand" id="visit">
 
 
 def cta_band(title, text, book_msg):
-    return """<section class="band band-forest cta-band">
+    return """<section class="band band-forest cta-band" id="book">
   <div class="wrap">
     <p class="eyebrow">Book</p>
     <h2 style="margin-top:12px">{title}</h2>
@@ -327,7 +327,8 @@ def render(p):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RVEWWMJKN"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-7RVEWWMJKN');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-7RVEWWMJKN');
+document.addEventListener('click',function(e){{var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href'),ev=/wa\.me\//.test(h)?'whatsapp_click':/^tel:/.test(h)?'phone_click':/^mailto:/.test(h)?'email_click':/share\.google|google\.[a-z.]+\/maps/.test(h)?'directions_click':null;if(!ev)return;var s=a.closest('section[id],header,footer,.float-actions,.fa-wa,nav');gtag('event',ev,{{link_location:s?(s.id||s.className.split(' ')[0]||s.tagName.toLowerCase()):'page',link_text:(a.textContent.trim()||a.getAttribute('aria-label')||'').slice(0,60)}});}});</script>
 <title>{title_e}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{url}">

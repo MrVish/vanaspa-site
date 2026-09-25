@@ -19,6 +19,9 @@
   gtag('js', new Date());
 
   gtag('config', 'G-7RVEWWMJKN');
+
+  /* Booking-intent events: WhatsApp, call, email and directions taps */
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href'),ev=/wa\.me\//.test(h)?'whatsapp_click':/^tel:/.test(h)?'phone_click':/^mailto:/.test(h)?'email_click':/share\.google|google\.[a-z.]+\/maps/.test(h)?'directions_click':null;if(!ev)return;var s=a.closest('section[id],header,footer,.float-actions,.fa-wa,nav');gtag('event',ev,{link_location:s?(s.id||s.className.split(' ')[0]||s.tagName.toLowerCase()):'page',link_text:(a.textContent.trim()||a.getAttribute('aria-label')||'').slice(0,60)});});
 </script>
 
 <title>VĀNA Wellness Spa Kakkanad | Massage &amp; Spa near Infopark, Kochi</title>
