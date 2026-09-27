@@ -770,8 +770,9 @@ body::before{
 @media(max-width:860px){.who-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.who-grid{grid-template-columns:1fr}}
 .who-card{padding:40px 30px 40px 30px;border-right:1px solid var(--hair);transition:transform .4s var(--ease)}
+.who-card:first-child { padding-left: 0; }
 .who-card:last-child{border-right:none;padding-right:0}
-@media(max-width:860px){.who-card{padding:36px 26px;border-right:1px solid var(--hair)}.who-card:nth-child(2n){border-right:none}}
+@media(max-width:860px){.who-card{padding:36px 26px !important; border-right:1px solid var(--hair)}.who-card:nth-child(2n){border-right:none}}
 @media(max-width:520px){.who-card{border-right:none;border-bottom:1px solid var(--hair)}}
 .who-card:hover{transform:translateY(-4px)}
 .who-mark{width:26px;height:26px;margin-bottom:20px}
