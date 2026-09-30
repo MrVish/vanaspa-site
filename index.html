@@ -882,7 +882,7 @@ body::before{
 .foot-links{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
 .foot-links a{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,247,239,.6);transition:color .25s}
 .foot-links a:hover{color:var(--gold-lt)}
-.foot-legal{font-size:9.5px;letter-spacing:.08em;color:rgba(251,247,239,.4);line-height:2}
+.foot-legal{font-size:9.5px;letter-spacing:.08em;color:rgba(251,247,239,.6);line-height:2}
 
 /* ── Reveal / motion ────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
@@ -1008,7 +1008,12 @@ body.menu-open{overflow:hidden}
 .book-list li{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--hair);font-size:13.5px;line-height:1.8;color:var(--soft)}
 .book-list b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--gold)}
 .book-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.foot-links.small a{font-size:9px;letter-spacing:.18em;color:rgba(251,247,239,.45)}
+.foot-links.small a{font-size:9px;letter-spacing:.18em;color:rgba(251,247,239,.62)}
+.tx-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.tx-jump a{padding:9px 16px;border:1px solid var(--hair-gold);border-radius:40px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);transition:all .3s var(--ease)}
+.tx-jump a:hover{border-color:var(--terra);color:var(--terra)}
+.tx-group{scroll-margin-top:90px}
+.fa-lbl{display:none}
 .more-link{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);border-bottom:1px solid var(--hair-gold)}
 
 @media(max-width:780px){
@@ -1035,6 +1040,26 @@ body.menu-open{overflow:hidden}
   /* give the larger text room: slimmer side gutters, duration under the description */
   .sect{padding-left:22px;padding-right:22px}
   .tx-meta{flex-direction:column;gap:6px}
+  .tx-jump{gap:8px}
+  .tx-jump a{font-size:12px;padding:9px 14px}
+  /* hero buttons: full width, same size */
+  .hero-ctas{flex-direction:column;gap:12px}
+  .scroll-cue{display:none}
+  .hero-ctas .btn{justify-content:center}
+  /* info strip: 2 x 2 instead of four tall rows */
+  .strip-item{flex:0 0 50%;min-width:0;padding:22px 10px;border-bottom:1px solid var(--hair)}
+  .strip-item:nth-child(2n){border-right:none}
+  .strip-item:nth-child(n+3){border-bottom:none}
+  .strip-big{font-size:20px}
+  .strip-small{letter-spacing:.08em;line-height:1.6}
+  /* contact: one bar along the bottom instead of floating buttons over the text */
+  body{padding-bottom:calc(58px + env(safe-area-inset-bottom))}
+  .float-actions{left:0;right:0;bottom:0;flex-direction:row;align-items:stretch;gap:0;padding-bottom:env(safe-area-inset-bottom);background:var(--forest,#1f2a1c);box-shadow:0 -10px 30px -12px rgba(0,0,0,.35)}
+  .float-actions .fa-pill,.float-actions .fa-wa{flex:1;height:58px;width:auto;border-radius:0;justify-content:center;box-shadow:none;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:0}
+  .float-actions .fa-wa::after{display:none}
+  .float-actions .fa-wa svg{width:22px;height:22px}
+  .float-actions .fa-pill:hover,.float-actions .fa-wa:hover{transform:none}
+  .fa-lbl{display:inline}
 }
 </style>
 </head>
@@ -1045,7 +1070,7 @@ body.menu-open{overflow:hidden}
 <div class="float-actions" aria-label="Quick contact">
   <a class="fa-pill" href="tel:+918129662890" aria-label="Call VĀNA Wellness Spa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.3 21 3 13.7 3 4.5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.12.35.03.75-.24 1.02L6.6 10.8z"/></svg>Call Us</a>
   <a class="fa-wa" href="https://wa.me/918129662890?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20V%C4%80NA%20Wellness%20Spa." target="_blank" rel="noopener noreferrer" aria-label="Message VĀNA on WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="fa-lbl">WhatsApp</span>
   </a>
 </div>
 
@@ -1112,7 +1137,7 @@ body.menu-open{overflow:hidden}
 <!-- ── Strip ──────────────────────────────── -->
 <div class="strip" role="presentation">
   <div class="strip-item"><div class="strip-big">Now open</div><div class="strip-small">Every day of the week</div></div>
-  <div class="strip-item"><div class="strip-big">Until 9:30 PM</div><div class="strip-small">Fri – Sun · 9 PM Mon – Thu</div></div>
+  <div class="strip-item"><div class="strip-big">Open late</div><div class="strip-small">9 PM Mon – Thu · 9:30 PM Fri – Sun</div></div>
   <div class="strip-item"><div class="strip-big">From ₹2,500</div><div class="strip-small">60-min massage · full price</div></div>
   <div class="strip-item"><div class="strip-big">Minutes away</div><div class="strip-small">From Infopark · Parking on site</div></div>
 </div>
@@ -1203,9 +1228,10 @@ body.menu-open{overflow:hidden}
       <span class="eyebrow center">The Menu</span>
       <h2 class="title" style="margin-top:14px">Our treatments,<br>done properly</h2>
       <p class="sub">Massage, couples, express resets, skin and body — honest pricing, displayed and kept. No add-on theatre at the table.</p>
+      <nav class="tx-jump" aria-label="Jump to a section of the menu"><a href="#m-massage">Massages</a><a href="#m-couples">Couples &amp; signature</a><a href="#m-express">Express</a><a href="#m-skin">Skin &amp; body</a></nav>
     </div>
     <div class="tx-list reveal">
-          <p class="tx-group">Massages · 60 / 90 min</p>
+          <p class="tx-group" id="m-massage">Massages · 60 / 90 min</p>
           <div class="tx-row">
             <h3 class="tx-name"><a href="/swedish-massage-kakkanad/">Swedish Restore</a><span class="tx-kind">Swedish massage</span></h3>
             <span class="tx-price">₹2,500 – 3,200</span>
@@ -1232,7 +1258,7 @@ body.menu-open{overflow:hidden}
             <div class="tx-meta"><span class="tx-desc">Targeted work for overused muscles — warm-up, release, recover. For runners, gym regulars and weekend athletes. <span style="color:var(--terra)">+ Complimentary 10-min steam &amp; shower</span></span><span class="tx-time">60 / 90 min</span></div>
           </div>
 
-          <p class="tx-group">Four Hands · Signature · Couples</p>
+          <p class="tx-group" id="m-couples">Four Hands · Signature · Couples</p>
           <div class="tx-row">
             <h3 class="tx-name">Four Hands<span class="tx-kind">Four hands massage</span></h3>
             <span class="tx-price">₹4,800 – 5,800</span>
@@ -1249,7 +1275,7 @@ body.menu-open{overflow:hidden}
             <div class="tx-meta"><span class="tx-desc">The Signature side by side in the couples suite, with a private 15-minute steam &amp; shower of its own. The one room we hold back — ask for it when you book.</span><span class="tx-time">90 / 120 min</span></div>
           </div>
 
-          <p class="tx-group">Express · short resets, made for after work</p>
+          <p class="tx-group" id="m-express">Express · short resets, made for after work</p>
           <div class="tx-row">
             <h3 class="tx-name">Neck, Back &amp; Shoulders<span class="tx-kind">Back &amp; shoulder massage</span></h3>
             <span class="tx-price">₹1,500 – 1,800</span>
@@ -1281,7 +1307,7 @@ body.menu-open{overflow:hidden}
             <div class="tx-meta"><span class="tx-desc">Foot &amp; Head or Back &amp; Head ₹2,200 · Foot, Head &amp; Back ₹2,600.</span><span class="tx-time">60 min</span></div>
           </div>
 
-          <p class="tx-group">Skin · Body · Hands &amp; Feet</p>
+          <p class="tx-group" id="m-skin">Skin · Body · Hands &amp; Feet</p>
           <div class="tx-row">
             <h3 class="tx-name"><a href="/facials-body-care/">Facials</a><span class="tx-kind">Deep Cleanse · Hydrating · VĀNA Signature</span></h3>
             <span class="tx-price">₹2,300 – 2,500</span>
