@@ -175,3 +175,13 @@ h3{font-size:22px;font-weight:500;line-height:1.25}
 .fa-wa{position:fixed;right:18px;bottom:18px;z-index:54;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:#1f7a40;color:#fff;box-shadow:0 14px 30px -8px rgba(18,55,28,.6);transition:transform .3s var(--ease)}
 .fa-wa:hover{transform:translateY(-2px) scale(1.05)}
 .fa-wa svg{width:28px;height:28px;fill:currentColor}
+
+/* Mobile readability: no text below 12px on phones.
+   Uppercase labels go to 12px with tighter tracking; reading text to 14px. */
+@media(max-width:780px){
+  .head-nav a,.eyebrow,.p-facts small,.related em,.visit h3,.byline,.compare th,.site-foot h4{font-size:12px;letter-spacing:.14em}
+  .btn{font-size:13px;letter-spacing:.14em}
+  .crumbs,.p-figure figcaption,.price-note,.prose .note,.foot-legal{font-size:13px;letter-spacing:.04em}
+  .price-row .ds,.related span,.hrs,.posts span,.compare,.site-foot p,.site-foot li a{font-size:14px}
+  .price-row .pr{font-size:15px}
+}

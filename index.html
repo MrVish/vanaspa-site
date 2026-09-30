@@ -3,7 +3,7 @@
 <head>
 
 <!-- ═══════════════════════════════════════════════
-  VĀNA — full site · open since 18 September 2026 · v5 "Last Light"
+  VĀNA — full site · v5 "Last Light"
   Warm golden-hour editorial redesign
 ═══════════════════════════════════════════════ -->
 <meta charset="UTF-8">
@@ -1009,6 +1009,7 @@ body.menu-open{overflow:hidden}
 .book-list b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--gold)}
 .book-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .foot-links.small a{font-size:9px;letter-spacing:.18em;color:rgba(251,247,239,.45)}
+.more-link{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);border-bottom:1px solid var(--hair-gold)}
 
 @media(max-width:780px){
   .head-nav{display:none}
@@ -1019,6 +1020,21 @@ body.menu-open{overflow:hidden}
   .fa-pill{padding:12px 17px;font-size:10px;letter-spacing:.16em}
   .hero-leaf{opacity:.4}
   .botanical{opacity:.08 !important}
+}
+
+/* Mobile readability: no text below 12px on phones.
+   Uppercase labels go to 12px with tighter tracking; reading text to 14px. */
+@media(max-width:780px){
+  .eyebrow,.hero-eyebrow,.scroll-cue,.strip-small,.tx-group,.tx-time,.tx-kind,
+  .space-status,.space-specs .l,.g-cap p,.brand-quote .a,.visit-block h3,
+  .offer-card .word,.mm-foot,.foot-links a,.foot-links.small a,.more-link{font-size:12px;letter-spacing:.14em}
+  .btn,.wa-btn,.tx-links a,.mobile-menu .mm-cta,.fa-pill{font-size:13px;letter-spacing:.14em}
+  .tx-desc,.way-card p,.who-card p,.offer-card p,.faq-a p,.hours-row,.foot-about{font-size:14px}
+  .render-note,.notify-note,.offer-foot,.foot-legal{font-size:13px;letter-spacing:.04em}
+  .tx-price,.book-list li{font-size:15px}
+  /* give the larger text room: slimmer side gutters, duration under the description */
+  .sect{padding-left:22px;padding-right:22px}
+  .tx-meta{flex-direction:column;gap:6px}
 }
 </style>
 </head>
@@ -1338,7 +1354,7 @@ body.menu-open{overflow:hidden}
     <h2 class="title" style="margin-top:16px">Give an hour at VĀNA</h2>
     <p class="sub">A treatment, beautifully given. Gift cards at any amount, always at face value — or set aside a prepaid tier, Bronze to Platinum, worth up to ₹71,500 of treatments. Monthly memberships start at ₹2,000.</p>
     <a class="btn btn-primary" href="https://wa.me/918129662890?text=Hi%2C%20I%27d%20like%20to%20arrange%20a%20V%C4%80NA%20gift%20card." target="_blank" rel="noopener noreferrer">Arrange a Gift on WhatsApp</a>
-    <p style="margin-top:18px"><a href="/offers/" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);border-bottom:1px solid var(--hair-gold)">Memberships &amp; prepaid</a></p>
+    <p style="margin-top:18px"><a class="more-link" href="/offers/">Memberships &amp; prepaid</a></p>
   </div>
 </section>
 
