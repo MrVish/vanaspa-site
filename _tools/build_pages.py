@@ -252,7 +252,20 @@ VISIT = """<section class="band band-sand" id="visit">
 </section>""".format(a0=ADDRESS_LINES[0], a1=ADDRESS_LINES[1], maps=MAPS_URL, tel=PHONE_TEL, phone=PHONE_DISPLAY, e1=EMAIL, e2=EMAIL_2)
 
 
-def cta_band(title, text, book_msg):
+# Treatment the home-page booking form should preselect, per page (see "?book=" in index.html)
+BOOK_KEYS = {
+    "deep-tissue-massage-kakkanad": "deep",
+    "swedish-massage-kakkanad": "swedish",
+    "balinese-massage-kakkanad": "balinese",
+    "sports-massage-kakkanad": "sports",
+    "couples-spa-kakkanad": "couples",
+    "journal/swedish-vs-deep-tissue-massage": "deep",
+    "journal/massage-for-neck-and-shoulder-tension-desk-work": "nbs",
+}
+
+
+def cta_band(title, text, book_msg, book_key=""):
+    form_url = "/?book={}#book".format(book_key) if book_key else "/#book"
     return """<section class="band band-forest cta-band" id="book">
   <div class="wrap">
     <p class="eyebrow">Book</p>
@@ -260,10 +273,11 @@ def cta_band(title, text, book_msg):
     <p>{text}</p>
     <div class="p-ctas">
       <a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">{svg}Book on WhatsApp</a>
+      <a class="btn btn-light" href="{form_url}">Pick a day &amp; time</a>
       <a class="btn btn-light" href="tel:{tel}">Call {phone}</a>
     </div>
   </div>
-</section>""".format(title=title, text=text, wa=wa(book_msg), svg=WA_SVG, tel=PHONE_TEL, phone=PHONE_DISPLAY)
+</section>""".format(title=title, text=text, wa=wa(book_msg), svg=WA_SVG, form_url=form_url, tel=PHONE_TEL, phone=PHONE_DISPLAY)
 
 
 def related_html(slugs):
@@ -393,7 +407,7 @@ document.addEventListener('click',function(e){{var a=e.target.closest&&e.target.
         eyebrow=p["eyebrow"], h1=p["h1"], lede=p["lede"], facts=facts, wa=wa(book_msg), svg=WA_SVG,
         cta2_url=p.get("cta2_url", "#details"), cta2=p.get("cta2", "Prices &amp; details"),
         alt=html.escape(p["alt"], quote=True), body=p["body"], faqs=faqs,
-        cta=cta_band(p.get("cta_title", "Book your session"), p.get("cta_text", "Message us on WhatsApp with a day and time. We'll confirm your slot, then send three short questions the day before so your therapist is ready when you arrive."), book_msg),
+        cta=cta_band(p.get("cta_title", "Book your session"), p.get("cta_text", "Message us on WhatsApp with a day and time. We'll confirm your slot, then send three short questions the day before so your therapist is ready when you arrive."), book_msg, BOOK_KEYS.get(p["slug"], "")),
         related=related, visit=VISIT, footer=footer())
 
 
