@@ -1008,6 +1008,50 @@ body.menu-open{overflow:hidden}
 .book-list li{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--hair);font-size:13.5px;line-height:1.8;color:var(--soft)}
 .book-list b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--gold)}
 .book-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+/* ── Booking form ───────────────────────── */
+.book-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-rows:auto 1fr;grid-template-areas:"intro form" "after form";column-gap:72px;align-items:start}
+.book-after{margin-top:28px}
+.book-intro{grid-area:intro;min-width:0}.bk{grid-area:form;min-width:0}.book-after{grid-area:after;min-width:0}
+@media(max-width:880px){.book-split{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "form" "after";row-gap:36px}}
+.bk{background:var(--cream);border:1px solid var(--hair-gold);border-radius:4px;padding:30px 30px 26px;box-shadow:var(--shadow)}
+.bk-step{border:0;margin:0 0 24px;padding:0;min-width:0}
+.bk-step legend{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);margin-bottom:12px;padding:0}
+.bk-step legend span{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--gold-mid);font-family:var(--sans);font-style:normal;font-size:11px;color:var(--gold)}
+.bk-lbl{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.bk-lbl em{font-style:normal;text-transform:none;letter-spacing:0;color:var(--faint)}
+.bk-field{display:block;margin-bottom:14px}
+.bk select,.bk input[type=text],.bk textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--hair);border-radius:3px;padding:12px 13px;transition:border-color .2s}
+.bk select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23984320' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 14px center;padding-right:38px}
+.bk textarea{resize:vertical;min-height:64px}
+.bk select:focus,.bk input[type=text]:focus,.bk textarea:focus{outline:none;border-color:var(--terra)}
+.bk-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.bk-row .bk-lbl{margin:0}
+.bk-seg{display:inline-flex;border:1px solid var(--hair-gold);border-radius:40px;overflow:hidden}
+.bk-seg label,.bk-days label,.bk-times label{position:relative;cursor:pointer}
+.bk-seg input,.bk-days input,.bk-times input{position:absolute;opacity:0;pointer-events:none}
+.bk-seg span{display:block;padding:9px 18px;font-size:13px;color:var(--soft);transition:all .2s}
+.bk-seg input:checked+span{background:var(--terra);color:var(--cream)}
+.bk-days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.bk-days span{display:flex;flex-direction:column;align-items:center;min-width:62px;padding:9px 6px;border:1px solid var(--hair);border-radius:4px;background:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);transition:all .2s}
+.bk-days b{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:0;color:var(--ink);line-height:1.15}
+.bk-days input:checked+span{border-color:var(--terra);background:var(--terra);color:rgba(251,247,239,.85)}
+.bk-days input:checked+span b{color:var(--cream)}
+.bk-days input:disabled+span{opacity:.4;cursor:not-allowed}
+.bk-times{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.bk-times span{display:block;text-align:center;padding:10px 4px;border:1px solid var(--hair);border-radius:4px;background:#fff;font-size:14px;color:var(--ink);font-feature-settings:"tnum" 1;transition:all .2s}
+.bk-times input:checked+span{border-color:var(--terra);background:var(--terra);color:var(--cream)}
+.bk-seg input:focus-visible+span,.bk-days input:focus-visible+span,.bk-times input:focus-visible+span{outline:2px solid var(--gold-mid);outline-offset:2px}
+.bk-hint{font-size:13px;color:var(--faint);margin-top:8px}
+.bk-check{display:flex;align-items:center;gap:10px;margin:2px 0 16px;font-size:15px;color:var(--soft);cursor:pointer}
+.bk-check input{width:18px;height:18px;accent-color:var(--terra)}
+.bk-error{margin-bottom:12px;padding:10px 13px;border-left:3px solid var(--terra);background:rgba(152,67,32,.07);font-size:14px;color:var(--terra)}
+.bk-submit{width:100%;justify-content:center}
+.bk-small{margin-top:10px;font-size:12.5px;line-height:1.7;color:var(--faint);text-align:center}
+.bk-done{margin-top:16px;padding:14px 16px;border:1px solid rgba(31,122,64,.35);background:rgba(31,122,64,.06);border-radius:4px;font-size:14px;line-height:1.75;color:var(--soft)}
+.bk-done a,.bk-nojs a{color:var(--terra);border-bottom:1px solid var(--hair-gold)}
+.bk-nojs{font-size:14px;color:var(--soft);margin-bottom:12px}
+.book-after .book-list{margin-top:0}
+@media(max-width:780px){.bk{padding:22px 18px 20px}.bk-step legend{font-size:20px}}
+
 .foot-links.small a{font-size:9px;letter-spacing:.18em;color:rgba(251,247,239,.62)}
 .tx-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
 .tx-jump a{padding:9px 16px;border:1px solid var(--hair-gold);border-radius:40px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);transition:all .3s var(--ease)}
@@ -1513,21 +1557,71 @@ body.menu-open{overflow:hidden}
 
 <!-- ── Book ───────────────────────────────── -->
 <section class="sect" id="book">
-  <div class="notify-split">
-    <figure class="notify-figure reveal">
-      <img src="/assets/img/balcony-lounge.jpg" alt="The green-view lounge at VĀNA Wellness Spa, Kakkanad, at dusk — cane chairs among plants and lantern light" loading="lazy">
-    </figure>
-    <div class="reveal">
+  <div class="book-split">
+    <div class="book-intro reveal">
       <p class="eyebrow">Book</p>
       <h2 class="title" style="margin-top:14px">Your hour, reserved</h2>
-      <p class="sub" style="margin-left:0">Message us on WhatsApp or call with a treatment, day and time — we'll confirm your slot. Evenings fill first; the couples suite is the one room we hold back.</p>
+      <p class="sub" style="margin-left:0">Choose a treatment, a day and a time. Your request opens in WhatsApp, already written: press send and we'll confirm your slot. Evenings fill first; the couples suite is the one room we hold back.</p>
+    </div>
+
+    <form class="bk reveal" id="bookForm" novalidate>
+      <noscript><p class="bk-nojs">The booking form needs JavaScript. Message us on <a href="https://wa.me/918129662890?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20at%20V%C4%80NA%20Wellness%20Spa.">WhatsApp</a> or call <a href="tel:+918129662890">+91 81296 62890</a> instead.</p></noscript>
+      <fieldset class="bk-step">
+        <legend><span>1</span>Treatment</legend>
+        <label class="bk-field">
+          <span class="bk-lbl">What would you like?</span>
+          <select id="bkTreat" name="treatment" required></select>
+        </label>
+        <div class="bk-row">
+          <span class="bk-lbl">For</span>
+          <div class="bk-seg" role="radiogroup" aria-label="Number of guests">
+            <label><input type="radio" name="guests" value="1" checked><span>Just me</span></label>
+            <label><input type="radio" name="guests" value="2"><span>Two of us</span></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="bk-step">
+        <legend><span>2</span>Day</legend>
+        <div class="bk-days" id="bkDays" role="radiogroup" aria-label="Day"></div>
+      </fieldset>
+
+      <fieldset class="bk-step">
+        <legend><span>3</span>Time</legend>
+        <div class="bk-times" id="bkTimes" role="radiogroup" aria-label="Start time"></div>
+        <p class="bk-hint" id="bkTimeHint">Pick a day to see times.</p>
+      </fieldset>
+
+      <fieldset class="bk-step">
+        <legend><span>4</span>You</legend>
+        <label class="bk-field">
+          <span class="bk-lbl">Your name</span>
+          <input type="text" id="bkName" name="name" autocomplete="name" maxlength="60" required>
+        </label>
+        <label class="bk-check"><input type="checkbox" id="bkFemale" name="female"><span>I'd prefer a female therapist</span></label>
+        <label class="bk-field">
+          <span class="bk-lbl">Anything we should know? <em>optional</em></span>
+          <textarea id="bkNote" name="note" rows="2" maxlength="300" placeholder="Where it hurts, pressure you like, injuries, a special occasion…"></textarea>
+        </label>
+      </fieldset>
+
+      <p class="bk-error" id="bkError" role="alert" hidden></p>
+      <button class="btn btn-primary bk-submit" type="submit">Request on WhatsApp</button>
+      <p class="bk-small">Opens WhatsApp with your request to +91 81296 62890. Nothing is sent until you press send. We'll reply to confirm, usually within the hour.</p>
+      <div class="bk-done" id="bkDone" hidden>
+        <p><b>Almost there.</b> WhatsApp should have opened with your request — press <b>send</b> and we'll confirm your slot.</p>
+        <p>Didn't open? <a id="bkFallback" href="#" target="_blank" rel="noopener noreferrer">Tap here to open WhatsApp</a>, or call <a href="tel:+918129662890">+91 81296 62890</a>.</p>
+      </div>
+    </form>
+
+    <div class="book-after reveal">
       <ul class="book-list">
         <li><b>01</b><span>The day before, three short questions on WhatsApp — what hurts, what you're hoping for, what to avoid.</span></li>
         <li><b>02</b><span>Arrive ten minutes early. Your therapist is already briefed; no clipboard at the door.</span></li>
         <li><b>03</b><span>That evening, a note from us: what was worked, and what to carry forward.</span></li>
       </ul>
       <div class="book-ctas">
-        <a class="btn btn-primary" href="https://wa.me/918129662890?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20at%20V%C4%80NA%20Wellness%20Spa." target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+        <a class="btn btn-dark" href="https://wa.me/918129662890?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20at%20V%C4%80NA%20Wellness%20Spa." target="_blank" rel="noopener noreferrer">Just message us</a>
         <a class="btn btn-dark" href="tel:+918129662890">Call +91 81296 62890</a>
       </div>
       <p class="notify-note">Female therapist on request · Open every day until 9–9:30 PM</p>
@@ -1575,6 +1669,84 @@ body.menu-open{overflow:hidden}
 </footer>
 
 
+<script>
+/* Booking form: builds a WhatsApp message from the chosen treatment, day and time. */
+(function(){
+  var form=document.getElementById('bookForm'); if(!form) return;
+  var WA='918129662890';
+  var MENU=[
+    ['Massages',[['swedish','Swedish Restore',{60:2500,90:3200}],['aroma','Aromatherapy Calm',{60:2600,90:3200}],['balinese','Balinese Harmony',{60:2700,90:3500}],['deep','Deep Tissue Release',{60:2800,90:3500}],['sports','Sports Recovery',{60:3000,90:3500}]]],
+    ['Four hands · signature · couples',[['fourhands','Four Hands',{60:4800,90:5800}],['signature','Signature (alone)',{120:3800}],['couples','Couples Signature',{90:5700,120:6500},2]]],
+    ['Express',[['nbs','Neck, Back & Shoulders',{30:1500,45:1800}],['head','Head & Scalp',{30:1000}],['reflexology','Reflexology & Foot Restore',{30:700,45:1400}],['foot_head','Foot & Head',{60:2200}],['back_head','Back & Head',{60:2200}],['fhb','Foot, Head & Back',{60:2600}],['detan','De-Tan',{30:1200}],['steam','Steam & Shower',{15:500}]]],
+    ['Skin · body · hands & feet',[['facial_deep','Deep Cleanse Facial',{45:2300}],['facial_hyd','Hydrating Facial',{60:2300}],['facial_sig','VĀNA Signature Facial',{60:2500}],['scrub','Forest Scrub',{45:2200}],['wrap','Cocoon Wrap',{45:2200}],['scrub_wrap','Scrub & Cocoon',{60:3300}],['mani','Classic Manicure',{45:1400}],['mani_lux','Luxury Manicure',{60:2000}],['pedi','Classic Pedicure',{45:1600}],['pedi_lux','Luxury Pedicure',{60:2300}],['mani_pedi','Manicure & Pedicure',{90:2800}]]],
+    ['Combos',[['desk','Desk Rescue (Neck, Back & Shoulders + Head & Scalp)',{0:2500}],['feet','Feet First (Reflexology + Classic Pedicure)',{0:2050}],['evening','The Long Evening (90-min massage + Signature Facial)',{0:5100}],['polished','Polished (90-min massage + Forest Scrub)',{0:4850}],['halfday','Half Day (massage + scrub + wrap)',{0:6800}],['afternoon','The Whole Afternoon',{0:9300}],['two','Two of Us (Couples Signature + Reflexology)',{0:6400},2]]]
+  ];
+  var sel=document.getElementById('bkTreat'), days=document.getElementById('bkDays'), times=document.getElementById('bkTimes'),
+      hint=document.getElementById('bkTimeHint'), err=document.getElementById('bkError'), done=document.getElementById('bkDone');
+  var rupee=function(n){return '₹'+n.toLocaleString('en-IN')};
+  var opt=function(v,t){var o=document.createElement('option');o.value=v;o.textContent=t;return o};
+  sel.appendChild(opt('','Choose a treatment'));
+  sel.appendChild(opt('unsure','Not sure yet — help me choose'));
+  var info={};
+  MENU.forEach(function(g){var og=document.createElement('optgroup');og.label=g[0];
+    g[1].forEach(function(t){Object.keys(t[2]).forEach(function(m){var v=t[0]+'|'+m;
+      info[v]={name:t[1],min:+m,price:t[2][m],two:t[3]===2};
+      og.appendChild(opt(v,t[1]+(+m?' · '+m+' min':'')+' · '+rupee(t[2][m])));});});
+    sel.appendChild(og);});
+
+  /* India time, whatever the visitor's clock says */
+  var IST=330*60000, nowIST=function(){return new Date(Date.now()+IST)};
+  var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], DOWL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+      MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], MONL=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  /* Mon–Thu 12:00–21:00, Fri–Sun 11:00–21:30; last start 90 min before close; slots every 30 min */
+  var hours=function(dow){return (dow>=1&&dow<=4)?[12*60,19*60+30]:[11*60,20*60]};
+  var slotsFor=function(offset){var n=nowIST(),d=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate()+offset)),h=hours(d.getUTCDay()),out=[],
+      earliest=offset===0?n.getUTCHours()*60+n.getUTCMinutes()+60:0;
+    for(var m=h[0];m<=h[1];m+=30) if(m>=earliest) out.push(m); return {date:d,slots:out}};
+  var fmt=function(m){var h=Math.floor(m/60),mm=m%60;return ((h+11)%12+1)+':'+(mm<10?'0':'')+mm+' '+(h<12?'AM':'PM')};
+
+  for(var i=0;i<14;i++){var r=slotsFor(i),d=r.date,lab=document.createElement('label'),inp=document.createElement('input'),sp=document.createElement('span');
+    inp.type='radio';inp.name='day';inp.value=i;inp.disabled=!r.slots.length;
+    sp.innerHTML=(i===0?'Today':i===1?'Tmrw':DOW[d.getUTCDay()])+'<b>'+d.getUTCDate()+'</b>'+MON[d.getUTCMonth()];
+    lab.appendChild(inp);lab.appendChild(sp);days.appendChild(lab);}
+
+  var renderTimes=function(){var c=form.querySelector('input[name=day]:checked');times.innerHTML='';
+    if(!c){hint.hidden=false;return}
+    var r=slotsFor(+c.value);hint.hidden=true;
+    r.slots.forEach(function(m){var lab=document.createElement('label'),inp=document.createElement('input'),sp=document.createElement('span');
+      inp.type='radio';inp.name='time';inp.value=m;sp.textContent=fmt(m);lab.appendChild(inp);lab.appendChild(sp);times.appendChild(lab);});};
+  days.addEventListener('change',renderTimes);
+
+  sel.addEventListener('change',function(){var t=info[sel.value];if(t&&t.two) form.querySelector('input[name=guests][value="2"]').checked=true;});
+  /* preselect from a service page: /?book=deep#book */
+  var pre=(location.search.match(/[?&]book=([a-z_]+)/)||[])[1];
+  if(pre){for(var k=0;k<sel.options.length;k++){if(sel.options[k].value.indexOf(pre+'|')===0){sel.selectedIndex=k;sel.dispatchEvent(new Event('change'));break;}}}
+
+  form.addEventListener('submit',function(e){e.preventDefault();
+    var t=sel.value, day=form.querySelector('input[name=day]:checked'), time=form.querySelector('input[name=time]:checked'),
+        name=document.getElementById('bkName').value.trim(), note=document.getElementById('bkNote').value.trim(),
+        guests=form.querySelector('input[name=guests]:checked').value, female=document.getElementById('bkFemale').checked;
+    var miss=!t?'a treatment':!day?'a day':!time?'a time':!name?'your name':'';
+    if(miss){err.textContent='Please choose '+miss+'.';err.hidden=false;
+      (!t?sel:!day?days:!time?times:document.getElementById('bkName')).scrollIntoView({block:'center',behavior:'smooth'});return}
+    err.hidden=true;
+    var d=slotsFor(+day.value).date, tr=info[t];
+    var lines=['Hi VĀNA, I\'d like to book:',
+      '• Treatment: '+(tr?tr.name+(tr.min?' · '+tr.min+' min':'')+' ('+rupee(tr.price)+')':'Not sure yet, please suggest one'),
+      '• Day: '+DOWL[d.getUTCDay()]+' '+d.getUTCDate()+' '+MONL[d.getUTCMonth()],
+      '• Time: '+fmt(+time.value),
+      '• Guests: '+(guests==='2'?'2':'1'),
+      '• Name: '+name];
+    if(female) lines.push('• Female therapist, please');
+    if(note) lines.push('• Note: '+note);
+    lines.push('','(Sent from vanaspa.com)');
+    var url='https://wa.me/'+WA+'?text='+encodeURIComponent(lines.join('\n'));
+    document.getElementById('bkFallback').href=url; done.hidden=false;
+    if(typeof gtag==='function') gtag('event','booking_request',{treatment:tr?tr.name:'unsure',duration:tr?tr.min:0,guests:+guests,days_ahead:+day.value,link_location:'booking_form'});
+    var w=window.open(url,'_blank'); if(w){try{w.opener=null}catch(x){}} else location.href=url;
+  });
+})();
+</script>
 <script>
 /* Header state */
 const head=document.getElementById('siteHead');
